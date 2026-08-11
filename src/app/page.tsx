@@ -24,6 +24,7 @@ export default function Home() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isVerifyModalOpen, setIsVerifyModalOpen] = useState(false);
   const [isSellerModalOpen, setIsSellerModalOpen] = useState(false);
+  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string | null>(null);
 
   const handleAddToCart = (productId: string) => {
     const existing = cartItems.find((item) => item.product.id === productId);
@@ -129,7 +130,12 @@ export default function Home() {
 
             {/* Featured Product Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {FEATURED_PRODUCTS.map((prod) => (
+              {(selectedCategoryFilter
+                ? FEATURED_PRODUCTS.filter((prod) =>
+                    prod.category.toLowerCase().includes(selectedCategoryFilter.toLowerCase())
+                  )
+                : FEATURED_PRODUCTS
+              ).map((prod) => (
                 <div
                   key={prod.id}
                   className="bg-[#EFE6D0] rounded-2xl border-2 border-[#D6C8A6] hover:border-[#E07A2E] shadow-xs hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col justify-between group"
