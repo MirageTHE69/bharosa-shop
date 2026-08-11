@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, ShieldCheck, CheckCircle2, FileText, MapPin, Calendar, Award, ExternalLink, Search } from 'lucide-react';
+import { X, ShieldCheck, CheckCircle2, FileText, MapPin, Calendar, Award, Search } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 import { FEATURED_PRODUCTS } from '../data/bharosaData';
 

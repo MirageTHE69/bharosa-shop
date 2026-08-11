@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowUp, ShieldCheck, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { ArrowUp, ShieldCheck, Mail, Phone, MapPin } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 
 interface FooterProps {

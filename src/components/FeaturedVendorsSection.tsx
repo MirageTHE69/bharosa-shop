@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Award, CheckCircle2, ArrowRight, Store, Star, ExternalLink, X } from 'lucide-react';
+import { MapPin, Award, CheckCircle2, ArrowRight, Store, Star, X } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 import { VENDORS, Vendor } from '../data/bharosaData';
 

@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, ShoppingBag, Trash2, ArrowRight, ShieldCheck, Truck, Sparkles } from 'lucide-react';
-import { TrustSealBadge } from './TrustSealBadge';
+import { X, ShoppingBag, Trash2, ArrowRight, ShieldCheck, Truck } from 'lucide-react';
 import { Product } from '../data/bharosaData';
 
 export interface CartItem {

@@ -14,7 +14,7 @@ import { CartDrawer, CartItem } from '@/components/CartDrawer';
 import { Footer } from '@/components/Footer';
 import { FEATURED_PRODUCTS, Category } from '@/data/bharosaData';
 import { TrustSealBadge } from '@/components/TrustSealBadge';
-import { ShoppingBag, Star, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { ShoppingBag, Star, CheckCircle2, Sparkles } from 'lucide-react';
 
 export default function Home() {
   const [cartItems, setCartItems] = useState<CartItem[]>([
@@ -24,7 +24,6 @@ export default function Home() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isVerifyModalOpen, setIsVerifyModalOpen] = useState(false);
   const [isSellerModalOpen, setIsSellerModalOpen] = useState(false);
-  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string | null>(null);
 
   const handleAddToCart = (productId: string) => {
     const existing = cartItems.find((item) => item.product.id === productId);

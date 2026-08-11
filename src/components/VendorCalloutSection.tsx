@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Store, CheckCircle2, ShieldCheck, ArrowRight, X, Sparkles, Send } from 'lucide-react';
-import { TrustSealBadge } from './TrustSealBadge';
+import { Store, CheckCircle2, ArrowRight, X, Send } from 'lucide-react';
 
 interface VendorCalloutSectionProps {
   isModalOpen: boolean;
