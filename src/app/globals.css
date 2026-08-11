@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cream: #F6F1E4;
+    --card-sand: #EFE6D0;
+    --text-ink: #1E2C1B;
+    --leaf-green: #3F7D46;
+    --leaf-deep: #2A5C31;
+    --turmeric: #E07A2E;
+    --saffron-deep: #C4611E;
+    --gold-accent: #C79A3E;
+    --sand-border: #D6C8A6;
+  }
+
+  body {
+    background-color: var(--bg-cream);
+    color: var(--text-ink);
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.font-serif-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-devanagari {
+  font-family: var(--font-tiro-devanagari), 'Noto Sans Devanagari', serif;
+}
+
+.font-sans-body {
+  font-family: var(--font-inter), 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Custom Accessibility Focus Styles */
+*:focus-visible {
+  outline: 3px solid #3F7D46 !important;
+  outline-offset: 3px !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F1E4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C79A3E;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E07A2E;
+}
+
+/* Subtle Shimmer & Pulse Utilities */
+@keyframes trustPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.92; }
+}
+
+.animate-trust-pulse {
+  animation: trustPulse 3s ease-in-out infinite;
+}
+
