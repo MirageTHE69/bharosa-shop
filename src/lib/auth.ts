@@ -51,17 +51,22 @@ export interface CurrentUser {
 
 // Session-derived — no DB call, since role/name are already embedded in the JWT.
 export async function getCurrentUser(): Promise<CurrentUser | null> {
-  const session = await auth();
-  if (!session?.user?.id) return null;
+  try {
+    const session = await auth();
+    if (!session?.user?.id) return null;
 
-  return {
-    id: session.user.id,
-    email: session.user.email ?? null,
-    profile: {
+    return {
       id: session.user.id,
-      role: session.user.role,
-      full_name: session.user.name ?? null,
-      phone: null,
-    },
-  };
+      email: session.user.email ?? null,
+      profile: {
+        id: session.user.id,
+        role: session.user.role,
+        full_name: session.user.name ?? null,
+        phone: null,
+      },
+    };
+  } catch (err) {
+    console.error('Error fetching session in getCurrentUser:', err);
+    return null;
+  }
 }

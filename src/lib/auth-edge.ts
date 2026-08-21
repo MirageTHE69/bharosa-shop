@@ -6,6 +6,7 @@ import type { NextAuthConfig } from 'next-auth';
 // Mongoose is Node-only. Role is embedded in the JWT at sign-in time (see
 // src/lib/auth.ts), so reading it here in middleware never needs a DB call.
 export const authConfig: NextAuthConfig = {
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || 'bharosa-shop-production-secret-auth-key-2026',
   providers: [],
   session: { strategy: 'jwt' },
   pages: { signIn: '/auth/sign-in' },
