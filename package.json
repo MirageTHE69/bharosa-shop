@@ -6,26 +6,38 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:categories": "tsx scripts/seed-categories.ts",
+    "seed:admin": "tsx scripts/seed-admin.ts",
+    "seed:data": "tsx scripts/seed-vendors-products.ts"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.28.0",
+    "mongoose": "^9.9.3",
     "next": "^15.2.0",
+    "next-auth": "^5.0.0-beta.32",
     "postcss": "^8.5.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
+    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^20.19.43",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "dotenv": "^17.4.2",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.2.12",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.12",
     "typescript": "^5.9.3"
   }
 }

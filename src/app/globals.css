@@ -2,15 +2,22 @@
 
 @layer base {
   :root {
-    --bg-cream: #F6F1E4;
-    --card-sand: #EFE6D0;
-    --text-ink: #1E2C1B;
+    /* Neutral surfaces */
+    --bg-cream: #FBF9F4;
+    --card-sand: #F4EEE1;
+    --text-ink: #24291F;
+    --text-muted: #6B7263;
+    --border-subtle: #E7E0CE;
+
+    /* Two functional accents only */
     --leaf-green: #3F7D46;
     --leaf-deep: #2A5C31;
-    --turmeric: #E07A2E;
+    --turmeric: #C4611E;
+
+    /* legacy tokens kept for compatibility, unused going forward */
     --saffron-deep: #C4611E;
     --gold-accent: #C79A3E;
-    --sand-border: #D6C8A6;
+    --sand-border: #E7E0CE;
   }
 
   body {
@@ -35,32 +42,22 @@
 
 /* Custom Accessibility Focus Styles */
 *:focus-visible {
-  outline: 3px solid #3F7D46 !important;
-  outline-offset: 3px !important;
+  outline: 2px solid #3F7D46 !important;
+  outline-offset: 2px !important;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F1E4;
+  background: #FBF9F4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C79A3E;
+  background: #D8CDAE;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E07A2E;
-}
-
-/* Subtle Shimmer & Pulse Utilities */
-@keyframes trustPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.92; }
-}
-
-.animate-trust-pulse {
-  animation: trustPulse 3s ease-in-out infinite;
+  background: #C4611E;
 }
 

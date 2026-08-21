@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Tiro_Devanagari_Hindi, Inter } from "next/font/google";
 import "./globals.css";
+import { AppShellProvider } from "@/context/AppShellContext";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -37,8 +38,8 @@ export default function RootLayout({
       lang="hi"
       className={`${fraunces.variable} ${tiroDevanagari.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#F6F1E4] text-[#1E2C1B] selection:bg-[#E07A2E] selection:text-white">
-        {children}
+      <body className="min-h-full flex flex-col bg-[#FBF9F4] text-[#24291F] selection:bg-[#C4611E] selection:text-white">
+        <AppShellProvider>{children}</AppShellProvider>
       </body>
     </html>
   );
