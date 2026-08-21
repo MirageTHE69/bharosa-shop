@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                <span>Bharosa Organic Center, MG Road, Pune, Maharashtra 411001</span>
+                <span>Bharosa Organic Center, Alkapuri, Vadodara, Gujarat 390007</span>
               </li>
             </ul>
           </div>

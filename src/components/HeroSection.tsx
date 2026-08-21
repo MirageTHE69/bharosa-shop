@@ -31,7 +31,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 verified for you.
               </h1>
 
-              <p className="text-lg text-[#6B7263] max-w-xl leading-relaxed">
+              <h2 className="text-lg sm:text-xl font-semibold text-[#3F7D46] max-w-xl leading-snug">
+                Buy NABL Lab-Tested A2 Ghee, Cold-Pressed Oils, Raw Honey &amp; Spices
+                — Direct From Indian Farmers
+              </h2>
+
+              <p className="text-base text-[#6B7263] max-w-xl leading-relaxed">
                 Every spice, oil, ghee, and grain undergoes independent lab testing for
                 230+ chemical pesticides before reaching your kitchen — sourced directly
                 from local Indian organic farmers.

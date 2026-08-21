@@ -19,13 +19,13 @@ export const VendorCalloutSection: React.FC = () => {
             </span>
 
             <h2 className="font-serif-display text-3xl sm:text-4xl font-bold">
-              Grow with Bharosa Shop
+              Sell Your Organic Products on Bharosa Shop
             </h2>
 
             <p className="text-base text-white/70 max-w-2xl leading-relaxed">
-              Join India&apos;s most trusted organic seller marketplace. We handle
-              verification, lab testing logistics, and marketing while you get direct
-              access to 45,000+ conscious households.
+              Join 500+ verified organic farmers already selling on India&apos;s most
+              trusted lab-verified marketplace. We handle lab testing logistics and
+              marketing while you get direct access to 45,000+ conscious households.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">

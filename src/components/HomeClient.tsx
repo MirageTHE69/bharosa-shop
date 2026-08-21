@@ -8,6 +8,7 @@ import { CategoryGridSection } from '@/components/CategoryGridSection';
 import { FeaturedVendorsSection } from '@/components/FeaturedVendorsSection';
 import { WhyBharosaSection } from '@/components/WhyBharosaSection';
 import { VendorCalloutSection } from '@/components/VendorCalloutSection';
+import { FAQSection } from '@/components/FAQSection';
 import { ProductCard } from '@/components/ProductCard';
 import { useAppShell } from '@/context/AppShellContext';
 import type { Category, Vendor, ProductWithVendor } from '@/types/database';
@@ -95,7 +96,10 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
       {/* 9. Become a Vendor Section */}
       <VendorCalloutSection />
 
-      {/* 10. Verified Customer Testimonials */}
+      {/* 10. FAQ */}
+      <FAQSection />
+
+      {/* 11. Verified Customer Testimonials */}
       <section className="py-16 sm:py-24 bg-[#F4EEE1]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
