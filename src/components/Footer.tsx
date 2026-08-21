@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({
 
             <p className="text-sm text-[#6B7263] max-w-lg leading-relaxed">
               Every vendor and product listed on Bharosa Shop is thoroughly vetted. Only
-              100% lab-certified organic goods earn the signature Bharosa Verified Badge.
+              the best lab-certified organic products earn the signature Bharosa Verified Badge.
             </p>
           </div>
 

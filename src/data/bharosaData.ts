@@ -31,7 +31,7 @@ export const VALUE_PROPOSITIONS = [
     id: 'purity',
     titleEn: 'Pure & Certified',
     headlineHi: 'शुद्ध, सुरक्षित और गुणवत्तापूर्ण',
-    description: 'Every item is lab-tested organic with zero chemical residue. We guarantee absolute purity or 100% money back.',
+    description: 'Every item is lab-tested organic with zero chemical residue. We guarantee absolute purity.',
     icon: 'Sparkles',
   },
   {

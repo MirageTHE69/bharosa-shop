@@ -31,7 +31,7 @@ export const TrustSealBadge: React.FC<TrustSealBadgeProps> = ({
   return (
     <div
       className={`inline-flex items-center rounded-full bg-white text-[#2A5C31] border border-[#3F7D46]/30 font-semibold select-none ${sizeClasses[size]} ${className}`}
-      title="Verified 100% Organic & Lab Vetted by Bharosa Standards"
+      title="Verified Best Organic Product & Lab Vetted by Bharosa Standards"
       role="img"
       aria-label="Bharosa Verified Organic Seal"
     >

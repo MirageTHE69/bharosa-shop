@@ -65,7 +65,7 @@ export const WhyBharosaSection: React.FC = () => {
           </div>
           <p className="text-sm text-[#6B7263] max-w-xl mx-auto">
             We bridge authentic Indian farming traditions with modern laboratory
-            verification so your family enjoys 100% pure organic nourishment.
+            verification so your family enjoys the best organic products and pure nourishment.
           </p>
         </div>
 

@@ -24,8 +24,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Bharosa Shop - Fresh Organic Goodness, Verified for You | प्रकृति से सीधे आपके घर तक",
-  description: "Bharosa Shop is India's premier trusted marketplace for verified organic produce, pure A2 desi ghee, cold-pressed oils, wild honey, and natural grains direct from local farmers. 100% lab verified.",
-  keywords: ["organic produce", "bharosa verified", "cold pressed oils", "A2 ghee", "pure honey", "lab tested organic", "Indian organic farmers", "शुद्धता का वादा"],
+  description: "Bharosa Shop is India's premier trusted marketplace for the best organic products, pure A2 desi ghee, cold-pressed oils, wild honey, and natural grains direct from local farmers. Lab verified.",
+  keywords: ["best organic products", "bharosa verified", "cold pressed oils", "A2 ghee", "pure honey", "lab tested organic", "Indian organic farmers", "शुद्धता का वादा"],
 };
 
 export default function RootLayout({

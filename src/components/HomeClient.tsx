@@ -83,7 +83,7 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
       {/* 6. Hindi Slogan Divider */}
       <HindiDivider
         phraseHi="शुद्ध, सुरक्षित और गुणवत्तापूर्ण"
-        translationEn="100% Lab Verified • Zero Chemical Residue"
+        translationEn="Best Organic Products • Zero Chemical Residue"
       />
 
       {/* 7. Featured Farmers & Artisans */}
@@ -124,7 +124,7 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
               {
                 name: 'Meera & Rajesh Nair',
                 city: 'Bengaluru',
-                quote: 'Directly supporting Wayanad tribal honey gatherers while receiving 100% raw unheated forest honey. Best organic platform in India!',
+                quote: 'Directly supporting Wayanad tribal honey gatherers while receiving pure raw unheated forest honey. Best organic platform in India!',
                 product: 'Wild Forest Raw Honey',
               },
             ].map((rev, i) => (
