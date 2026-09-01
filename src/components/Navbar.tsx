@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenSellerModal,
   user = null,
 }) => {
-  const { t, fontClass } = useLanguage();
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -43,26 +43,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#FBF9F4]/95 backdrop-blur-md border-b border-[#E7E0CE]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between gap-4">
 
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded-lg py-1 transition-opacity hover:opacity-90 shrink-0"
+          className="flex items-center rounded-lg py-1 transition-opacity hover:opacity-90 shrink-0"
           aria-label="Bharosa Shop Home"
         >
-          {/* === NAVBAR LOGO SIZE: change 'h-12 sm:h-14' below to adjust size === */}
+          {/* === NAVBAR LOGO SIZE: change 'h-14 sm:h-20' below to adjust size === */}
           <img
             src="/logo.png"
             alt="Bharosa Shop"
-            className="h-12 sm:h-14 w-auto object-contain shrink-0"
+            className="h-14 sm:h-20 w-auto object-contain shrink-0"
           />
-
-          <div className="hidden sm:flex flex-col justify-center leading-tight border-l border-[#E7E0CE] pl-2.5">
-            <span className={`${fontClass} text-sm font-semibold text-[#3F7D46]`}>
-              {t('brand.tagline')}
-            </span>
-          </div>
         </Link>
 
         {/* Desktop Search Bar */}
