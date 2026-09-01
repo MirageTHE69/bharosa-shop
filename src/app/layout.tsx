@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Tiro_Devanagari_Hindi, Inter } from "next/font/google";
+import { Fraunces, Tiro_Devanagari_Hindi, Noto_Sans_Gujarati, Inter } from "next/font/google";
 import "./globals.css";
 import { AppShellProvider } from "@/context/AppShellContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -13,6 +14,12 @@ const tiroDevanagari = Tiro_Devanagari_Hindi({
   weight: "400",
   subsets: ["devanagari", "latin"],
   variable: "--font-tiro-devanagari",
+  display: "swap",
+});
+
+const notoGujarati = Noto_Sans_Gujarati({
+  subsets: ["gujarati", "latin"],
+  variable: "--font-noto-gujarati",
   display: "swap",
 });
 
@@ -36,10 +43,12 @@ export default function RootLayout({
   return (
     <html
       lang="hi"
-      className={`${fraunces.variable} ${tiroDevanagari.variable} ${inter.variable} h-full antialiased scroll-smooth`}
+      className={`${fraunces.variable} ${tiroDevanagari.variable} ${notoGujarati.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#FBF9F4] text-[#24291F] selection:bg-[#C4611E] selection:text-white">
-        <AppShellProvider>{children}</AppShellProvider>
+        <LanguageProvider>
+          <AppShellProvider>{children}</AppShellProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

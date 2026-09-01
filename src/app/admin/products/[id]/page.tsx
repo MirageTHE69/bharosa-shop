@@ -2,7 +2,11 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Award } from 'lucide-react';
 import { getProductByIdForAdmin } from '@/lib/data/products';
+import { getAllCategories } from '@/lib/data/categories';
 import { ProductApprovalActions } from '@/components/admin/ProductApprovalActions';
+import { AdminDeleteProductButton } from '@/components/admin/AdminDeleteProductButton';
+import { ProductForm } from '@/components/vendor/ProductForm';
+import { adminUpdateProduct } from '@/lib/actions/admin-products';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
 import type { ProductStatus } from '@/types/database';
 
@@ -22,12 +26,18 @@ export default async function AdminProductDetailPage({ params }: AdminProductDet
   const product = await getProductByIdForAdmin(id);
   if (!product) notFound();
 
+  const categories = await getAllCategories();
+  const boundAdminUpdate = adminUpdateProduct.bind(null, product.id);
+
   return (
     <div className="space-y-6">
-      <Link href="/admin/products" className="text-sm text-[#6B7263] hover:text-[#24291F] flex items-center space-x-1.5">
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to Products</span>
-      </Link>
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <Link href="/admin/products" className="text-sm text-[#6B7263] hover:text-[#24291F] flex items-center space-x-1.5">
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Products</span>
+        </Link>
+        <AdminDeleteProductButton productId={product.id} />
+      </div>
 
       <div className="bg-white border border-[#E7E0CE] rounded-2xl p-6 grid grid-cols-1 sm:grid-cols-12 gap-6">
         <div className="sm:col-span-4">
@@ -98,6 +108,21 @@ export default async function AdminProductDetailPage({ params }: AdminProductDet
             </div>
           )}
         </div>
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="font-serif-display text-lg font-bold text-[#24291F]">Edit Product Details</h2>
+        <p className="text-xs text-[#6B7263]">
+          Admins can edit any field — including the product photo — on any vendor&apos;s listing.
+          Saving here does not change the review status.
+        </p>
+        <ProductForm
+          categories={categories}
+          action={boundAdminUpdate}
+          initialValues={product}
+          submitLabel="Save Changes"
+          helperText="Changes save immediately and do not affect this product's review status."
+        />
       </div>
     </div>
   );

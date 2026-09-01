@@ -11,6 +11,7 @@ import { VendorCalloutSection } from '@/components/VendorCalloutSection';
 import { FAQSection } from '@/components/FAQSection';
 import { ProductCard } from '@/components/ProductCard';
 import { useAppShell } from '@/context/AppShellContext';
+import { useLanguage } from '@/context/LanguageContext';
 import type { Category, Vendor, ProductWithVendor } from '@/types/database';
 import { Star } from 'lucide-react';
 
@@ -22,6 +23,7 @@ interface HomeClientProps {
 
 export function HomeClient({ categories, vendors, featuredProducts }: HomeClientProps) {
   const { openVerifyModal } = useAppShell();
+  const { t, fontClass } = useLanguage();
 
   const scrollToCategories = () => {
     const el = document.getElementById('categories');
@@ -47,11 +49,11 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-                Batch-Screened Specials
+              <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+                {t('home.specialsEyebrow')}
               </span>
-              <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-                Featured Verified Harvests
+              <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+                {t('home.specialsTitle')}
               </h2>
             </div>
 
@@ -59,14 +61,14 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
               onClick={scrollToCategories}
               className="text-sm font-semibold text-[#3F7D46] hover:underline flex items-center space-x-1"
             >
-              <span>View All Categories</span>
+              <span className={fontClass}>{t('home.viewAllCategories')}</span>
               <span>→</span>
             </button>
           </div>
 
           {featuredProducts.length === 0 ? (
-            <p className="text-sm text-[#6B7263] bg-[#F4EEE1] rounded-2xl p-8 text-center">
-              No verified products yet — check back soon as our farmers get approved.
+            <p className={`text-sm text-[#6B7263] bg-[#F4EEE1] rounded-2xl p-8 text-center ${fontClass}`}>
+              {t('home.noProducts')}
             </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -103,11 +105,11 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
       <section className="py-16 sm:py-24 bg-[#F4EEE1]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-              Customer Stories
+            <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+              {t('home.storiesEyebrow')}
             </span>
-            <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-              Trusted by 45,000+ Kitchens Across India
+            <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+              {t('home.storiesTitle')}
             </h2>
           </div>
 

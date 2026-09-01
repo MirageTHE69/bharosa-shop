@@ -11,11 +11,18 @@ interface ProductFormProps {
   action: (prevState: ActionResult, formData: FormData) => Promise<ActionResult>;
   initialValues?: Product;
   submitLabel: string;
+  helperText?: string;
 }
 
 const initialState: ActionResult = {};
 
-export function ProductForm({ categories, action, initialValues, submitLabel }: ProductFormProps) {
+export function ProductForm({
+  categories,
+  action,
+  initialValues,
+  submitLabel,
+  helperText = "Submitting sends this product for admin review. It won't appear on the storefront until approved.",
+}: ProductFormProps) {
   const [state, formAction, isPending] = useActionState(action, initialState);
 
   return (
@@ -168,9 +175,7 @@ export function ProductForm({ categories, action, initialValues, submitLabel }: 
         <span>{isPending ? 'Saving…' : submitLabel}</span>
       </button>
 
-      <p className="text-xs text-[#6B7263]">
-        Submitting sends this product for admin review. It won&apos;t appear on the storefront until approved.
-      </p>
+      <p className="text-xs text-[#6B7263]">{helperText}</p>
     </form>
   );
 }

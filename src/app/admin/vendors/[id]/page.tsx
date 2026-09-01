@@ -4,6 +4,8 @@ import { MapPin, ArrowLeft } from 'lucide-react';
 import { getVendorById } from '@/lib/data/vendors';
 import { TrustSealBadge } from '@/components/TrustSealBadge';
 import { VendorApprovalActions } from '@/components/admin/VendorApprovalActions';
+import { VendorProfileForm } from '@/components/vendor/VendorProfileForm';
+import { adminUpdateVendor } from '@/lib/actions/admin-vendors';
 import { DEFAULT_VENDOR_AVATAR } from '@/lib/constants';
 import type { VendorStatus } from '@/types/database';
 
@@ -21,6 +23,8 @@ export default async function AdminVendorDetailPage({ params }: AdminVendorDetai
   const { id } = await params;
   const vendor = await getVendorById(id);
   if (!vendor) notFound();
+
+  const boundAdminUpdate = adminUpdateVendor.bind(null, vendor.id);
 
   return (
     <div className="space-y-6">
@@ -94,6 +98,14 @@ export default async function AdminVendorDetailPage({ params }: AdminVendorDetai
             <VendorApprovalActions vendorId={vendor.id} />
           </div>
         )}
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="font-serif-display text-lg font-bold text-[#24291F]">Edit Vendor Details</h2>
+        <p className="text-xs text-[#6B7263]">
+          Admins can edit any vendor&apos;s full profile — including photos and certification details.
+        </p>
+        <VendorProfileForm vendor={vendor} action={boundAdminUpdate} isAdmin />
       </div>
     </div>
   );

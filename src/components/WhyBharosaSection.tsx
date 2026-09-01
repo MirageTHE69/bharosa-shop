@@ -3,8 +3,10 @@
 import React from 'react';
 import { Sparkles, HeartHandshake, ScanLine, Leaf } from 'lucide-react';
 import { VALUE_PROPOSITIONS } from '../data/bharosaData';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const WhyBharosaSection: React.FC = () => {
+  const { t, fontClass } = useLanguage();
   const getIcon = (iconName: string) => {
     const cls = 'w-6 h-6 text-[#3F7D46]';
     switch (iconName) {
@@ -27,12 +29,12 @@ export const WhyBharosaSection: React.FC = () => {
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-            The Bharosa Standard
+          <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+            {t('why.eyebrow')}
           </span>
 
-          <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-            Why Choose Bharosa Shop?
+          <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+            {t('why.title')}
           </h2>
         </div>
 
@@ -63,9 +65,8 @@ export const WhyBharosaSection: React.FC = () => {
           <div className="font-devanagari text-2xl font-bold text-[#24291F]">
             “भरोसे का वादा, हर बार आपके साथ।”
           </div>
-          <p className="text-sm text-[#6B7263] max-w-xl mx-auto">
-            We bridge authentic Indian farming traditions with modern laboratory
-            verification so your family enjoys the best organic products and pure nourishment.
+          <p className={`text-sm text-[#6B7263] max-w-xl mx-auto ${fontClass}`}>
+            {t('why.quote')}
           </p>
         </div>
 

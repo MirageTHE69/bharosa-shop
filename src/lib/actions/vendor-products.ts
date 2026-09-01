@@ -6,6 +6,7 @@ import { connectDB } from '@/lib/db/connect';
 import { Vendor } from '@/lib/db/models/Vendor';
 import { Product } from '@/lib/db/models/Product';
 import { slugify } from '@/lib/slugify';
+import { readProductFields } from '@/lib/actions/product-fields';
 import type { ActionResult } from '@/lib/actions/auth';
 
 // No RLS in this stack — every ownership/status check below is the actual
@@ -22,23 +23,6 @@ async function getOwnVerifiedVendor(): Promise<{ vendorId?: string; error?: stri
     return { error: 'Your seller account is not verified yet — you cannot add products until an admin approves you.' };
   }
   return { vendorId: vendor._id.toString() };
-}
-
-function readProductFields(formData: FormData) {
-  return {
-    category_id: String(formData.get('categoryId') ?? ''),
-    title: String(formData.get('title') ?? '').trim(),
-    hindi_title: String(formData.get('hindiTitle') ?? '').trim() || null,
-    description: String(formData.get('description') ?? '').trim() || null,
-    price: Number(formData.get('price') ?? 0),
-    original_price: formData.get('originalPrice') ? Number(formData.get('originalPrice')) : null,
-    weight: String(formData.get('weight') ?? '').trim() || null,
-    image_url: String(formData.get('imageUrl') ?? '').trim() || null,
-    lab_pesticide_ppm: String(formData.get('labPesticidePpm') ?? '').trim() || null,
-    lab_purity_score: String(formData.get('labPurityScore') ?? '').trim() || null,
-    harvest_date: String(formData.get('harvestDate') ?? '').trim() || null,
-    farm_origin: String(formData.get('farmOrigin') ?? '').trim() || null,
-  };
 }
 
 export async function createProduct(_prevState: ActionResult, formData: FormData): Promise<ActionResult> {

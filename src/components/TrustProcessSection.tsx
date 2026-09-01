@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ShieldCheck, Microscope, Award, FileCheck2, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 import { TRUST_STEPS } from '../data/bharosaData';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface TrustProcessSectionProps {
   onOpenVerifyModal: () => void;
@@ -12,6 +13,7 @@ interface TrustProcessSectionProps {
 export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
   onOpenVerifyModal,
 }) => {
+  const { t, fontClass } = useLanguage();
   const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   const getStepIcon = (iconName: string) => {
@@ -33,17 +35,16 @@ export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-            Our Standard
+          <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+            {t('trust.eyebrow')}
           </span>
 
-          <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-            How Bharosa Works
+          <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+            {t('trust.title')}
           </h2>
 
-          <p className="text-base text-[#6B7263]">
-            We check every farmer, test every batch in accredited labs, and seal approved
-            products with QR-traceable purity guarantees.
+          <p className={`text-base text-[#6B7263] ${fontClass}`}>
+            {t('trust.desc')}
           </p>
         </div>
 
@@ -87,7 +88,7 @@ export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
                   ) : (
                     <div className="flex items-center space-x-1.5 text-xs font-medium text-[#3F7D46]">
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>Rigorous protocol</span>
+                      <span className={fontClass}>{t('trust.protocol')}</span>
                     </div>
                   )}
                 </div>
@@ -99,11 +100,12 @@ export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
         {/* Lab Verification Callout Banner */}
         <div className="bg-[#24291F] text-white rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center lg:text-left">
-            <h3 className="font-serif-display text-2xl font-bold">
-              Want to see real batch lab results?
+            <h3 className={`font-serif-display text-2xl font-bold ${fontClass}`}>
+              {t('trust.bannerTitle')}
             </h3>
-            <p className="text-sm text-white/70 max-w-2xl">
-              Enter any product batch code (e.g. <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono text-xs">BHAROSA-2026-GHEE-14</code>) to inspect pesticide, heavy metal, and purity scores in real time.
+            <p className={`text-sm text-white/70 max-w-2xl ${fontClass}`}>
+              {t('trust.bannerDesc')}{' '}
+              <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono text-xs">BHAROSA-2026-GHEE-14</code>
             </p>
           </div>
 
@@ -112,7 +114,7 @@ export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
             className="px-5 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold rounded-xl transition-colors shrink-0 flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-white"
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>Launch Batch Verifier</span>
+            <span className={fontClass}>{t('trust.launchVerifier')}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

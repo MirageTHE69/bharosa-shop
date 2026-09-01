@@ -9,8 +9,14 @@ import type { Vendor } from '@/types/database';
 
 const initialState: ActionResult = {};
 
-export function VendorProfileForm({ vendor }: { vendor: Vendor }) {
-  const [state, formAction, isPending] = useActionState(updateVendorProfile, initialState);
+interface VendorProfileFormProps {
+  vendor: Vendor;
+  action?: (prevState: ActionResult, formData: FormData) => Promise<ActionResult>;
+  isAdmin?: boolean;
+}
+
+export function VendorProfileForm({ vendor, action = updateVendorProfile, isAdmin = false }: VendorProfileFormProps) {
+  const [state, formAction, isPending] = useActionState(action, initialState);
 
   return (
     <form action={formAction} className="space-y-5 bg-white border border-[#E7E0CE] rounded-2xl p-6">
@@ -90,6 +96,36 @@ export function VendorProfileForm({ vendor }: { vendor: Vendor }) {
         <ImageUploadField bucket="vendor-media" name="avatarUrl" label="Avatar Photo" defaultValue={vendor.avatar_url} />
         <ImageUploadField bucket="vendor-media" name="farmImageUrl" label="Farm Photo" defaultValue={vendor.farm_image_url} />
       </div>
+
+      {isAdmin && (
+        <div className="pt-2 border-t border-[#E7E0CE] space-y-4">
+          <p className="text-xs font-semibold text-[#6B7263] uppercase tracking-wide">
+            Certification (Admin Only)
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#6B7263] mb-1">Certification Type</label>
+              <input
+                type="text"
+                name="certificationType"
+                defaultValue={vendor.certification_type ?? ''}
+                placeholder="e.g. NABL Accredited Lab"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-[#3F7D46] focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-[#6B7263] mb-1">Certification ID</label>
+              <input
+                type="text"
+                name="certificationId"
+                defaultValue={vendor.certification_id ?? ''}
+                placeholder="e.g. NABL-2026-PASS"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-[#3F7D46] focus:outline-none"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {state.error && (
         <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">

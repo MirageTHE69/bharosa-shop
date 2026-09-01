@@ -3,6 +3,7 @@
 import React from 'react';
 import { ArrowUp, ShieldCheck, Mail, Phone, MapPin } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface FooterProps {
   onOpenVerifyModal: () => void;
@@ -13,6 +14,8 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenVerifyModal,
   onOpenSellerModal,
 }) => {
+  const { t, fontClass } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -34,9 +37,8 @@ export const Footer: React.FC<FooterProps> = ({
               />
             </div>
 
-            <p className="text-sm text-[#6B7263] max-w-lg leading-relaxed">
-              Every vendor and product listed on Bharosa Shop is thoroughly vetted. Only
-              the best lab-certified organic products earn the signature Bharosa Verified Badge.
+            <p className={`text-sm text-[#6B7263] max-w-lg leading-relaxed ${fontClass}`}>
+              {t('footer.desc')}
             </p>
           </div>
 
@@ -48,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({
               className="px-4 py-2 bg-[#24291F] hover:bg-[#3F7D46] text-white font-medium text-xs rounded-lg transition-colors flex items-center space-x-1.5"
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Verify Lab Report Batch</span>
+              <span className={fontClass}>{t('nav.verifyBatchFull')}</span>
             </button>
           </div>
 
@@ -58,29 +60,29 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
 
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm text-[#24291F]">Organic Categories</h4>
-            <ul className="space-y-2 text-[#6B7263]">
-              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">A2 Desi Cow Ghee</a></li>
-              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">Lakadong Turmeric & Spices</a></li>
-              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">Raw Wild Forest Honey</a></li>
-              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">Wood-Pressed Kachi Ghani Oils</a></li>
-              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">Khapli Wheat & Ancient Grains</a></li>
+            <h4 className={`font-semibold text-sm text-[#24291F] ${fontClass}`}>{t('footer.categoriesHeading')}</h4>
+            <ul className={`space-y-2 text-[#6B7263] ${fontClass}`}>
+              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">{t('footer.cat1')}</a></li>
+              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">{t('footer.cat2')}</a></li>
+              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">{t('footer.cat3')}</a></li>
+              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">{t('footer.cat4')}</a></li>
+              <li><a href="#categories" className="hover:text-[#24291F] transition-colors">{t('footer.cat5')}</a></li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm text-[#24291F]">Trust & Quality</h4>
-            <ul className="space-y-2 text-[#6B7263]">
-              <li><a href="#trust-process" className="hover:text-[#24291F] transition-colors">3-Step Farm Vetting System</a></li>
-              <li><button onClick={onOpenVerifyModal} className="hover:text-[#24291F] transition-colors text-left">NABL Lab Testing Standard</button></li>
-              <li><a href="#vendors" className="hover:text-[#24291F] transition-colors">Meet Our Organic Farmers</a></li>
-              <li><button onClick={onOpenSellerModal} className="hover:text-[#24291F] transition-colors text-left">Apply for Seller Verification</button></li>
-              <li><a href="#why-us" className="hover:text-[#24291F] transition-colors">Why Bharosa</a></li>
+            <h4 className={`font-semibold text-sm text-[#24291F] ${fontClass}`}>{t('footer.trustHeading')}</h4>
+            <ul className={`space-y-2 text-[#6B7263] ${fontClass}`}>
+              <li><a href="#trust-process" className="hover:text-[#24291F] transition-colors">{t('footer.trustLink1')}</a></li>
+              <li><button onClick={onOpenVerifyModal} className="hover:text-[#24291F] transition-colors text-left">{t('footer.trustLink2')}</button></li>
+              <li><a href="#vendors" className="hover:text-[#24291F] transition-colors">{t('footer.trustLink3')}</a></li>
+              <li><button onClick={onOpenSellerModal} className="hover:text-[#24291F] transition-colors text-left">{t('footer.trustLink4')}</button></li>
+              <li><a href="#why-us" className="hover:text-[#24291F] transition-colors">{t('footer.trustLink5')}</a></li>
             </ul>
           </div>
 
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm text-[#24291F]">Helpline</h4>
+            <h4 className={`font-semibold text-sm text-[#24291F] ${fontClass}`}>{t('footer.helplineHeading')}</h4>
             <ul className="space-y-2 text-xs text-[#6B7263]">
               <li className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 shrink-0" />
@@ -98,15 +100,15 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm text-[#24291F]">Stay Connected</h4>
-            <p className="text-xs text-[#6B7263] leading-relaxed">
-              Receive seasonal harvest alerts and traditional Ayurvedic organic recipes.
+            <h4 className={`font-semibold text-sm text-[#24291F] ${fontClass}`}>{t('footer.connectHeading')}</h4>
+            <p className={`text-xs text-[#6B7263] leading-relaxed ${fontClass}`}>
+              {t('footer.connectDesc')}
             </p>
 
-            <form onSubmit={(e) => { e.preventDefault(); alert('Subscribed to Bharosa Harvest Alerts!'); }} className="flex space-x-1.5">
+            <form onSubmit={(e) => { e.preventDefault(); alert(t('footer.subscribed')); }} className="flex space-x-1.5">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={t('footer.emailPlaceholder')}
                 required
                 className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#E7E0CE] text-xs focus:ring-2 focus:ring-[#3F7D46] focus:outline-none"
               />
@@ -114,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
                 type="submit"
                 className="px-3 py-1.5 bg-[#C4611E] text-white text-xs font-semibold rounded-lg hover:bg-[#A84E15] transition-colors shrink-0"
               >
-                Join
+                <span className={fontClass}>{t('footer.join')}</span>
               </button>
             </form>
 
@@ -124,7 +126,7 @@ export const Footer: React.FC<FooterProps> = ({
               aria-label="Scroll back to top of page"
             >
               <ArrowUp className="w-3.5 h-3.5" />
-              <span>Back to Top</span>
+              <span className={fontClass}>{t('footer.backToTop')}</span>
             </button>
           </div>
 
@@ -132,10 +134,10 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Copyright */}
         <div className="pt-6 border-t border-[#E7E0CE] flex flex-col sm:flex-row items-center justify-between text-xs text-[#6B7263] gap-4">
-          <p>© {new Date().getFullYear()} Bharosa Shop Marketplace Pvt Ltd. All rights reserved.</p>
-          <div className="flex items-center space-x-4">
-            <a href="#" className="hover:text-[#24291F] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#24291F] transition-colors">Lab Vetting Terms</a>
+          <p className={fontClass}>© {new Date().getFullYear()} Bharosa Shop Marketplace Pvt Ltd. {t('footer.rightsReserved')}</p>
+          <div className={`flex items-center space-x-4 ${fontClass}`}>
+            <a href="#" className="hover:text-[#24291F] transition-colors">{t('footer.privacyPolicy')}</a>
+            <a href="#" className="hover:text-[#24291F] transition-colors">{t('footer.labVettingTerms')}</a>
           </div>
         </div>
 

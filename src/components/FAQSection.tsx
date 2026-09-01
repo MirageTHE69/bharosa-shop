@@ -2,42 +2,31 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translate } from '@/lib/i18n/translations';
 
-const FAQS = [
-  {
-    question: 'Is Bharosa Shop’s ghee really lab tested?',
-    answer:
-      'Yes. Every batch of our A2 Bilona ghee is screened by NABL-accredited labs for 230+ chemical pesticides and purity markers before it’s listed. Each product carries a QR batch code you can scan to view the full lab report.',
-  },
-  {
-    question: 'How do I sell my organic products on Bharosa Shop?',
-    answer:
-      'Apply for Verified Seller status from the homepage or footer. Our team assists with NABL lab testing, and once approved you get zero listing commission for your first 90 days plus direct bi-weekly payouts.',
-  },
-  {
-    question: 'What does the Bharosa Verified Seal mean?',
-    answer:
-      'The Bharosa Verified Seal is only awarded to vendors and products that pass our 3-step farm vetting system, including independent lab testing for chemical residues and full farm-to-table traceability.',
-  },
-  {
-    question: 'Does Bharosa Shop deliver across India?',
-    answer:
-      'Yes, we ship pan-India from our verified farmer network, with cold-chain handling for perishables like ghee and honey where required.',
-  },
+const FAQ_KEYS = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
 ];
 
 export const FAQSection: React.FC = () => {
+  const { t, fontClass } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  // Schema.org markup always uses the English copy — that's what search
+  // engines index regardless of the viewer's selected UI language.
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQS.map((faq) => ({
+    mainEntity: FAQ_KEYS.map(({ q, a }) => ({
       '@type': 'Question',
-      name: faq.question,
+      name: translate('en', q),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer,
+        text: translate('en', a),
       },
     })),
   };
@@ -51,25 +40,25 @@ export const FAQSection: React.FC = () => {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-2 mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-            Common Questions
+          <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+            {t('faq.eyebrow')}
           </span>
-          <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-            Frequently Asked Questions
+          <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+            {t('faq.title')}
           </h2>
         </div>
 
         <div className="divide-y divide-[#E7E0CE] border-t border-b border-[#E7E0CE]">
-          {FAQS.map((faq, i) => {
+          {FAQ_KEYS.map(({ q, a }, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={faq.question}>
+              <div key={q}>
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
                   className="w-full flex items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="font-semibold text-[#24291F]">{faq.question}</span>
+                  <span className={`font-semibold text-[#24291F] ${fontClass}`}>{t(q)}</span>
                   <ChevronDown
                     className={`w-4 h-4 shrink-0 text-[#6B7263] transition-transform ${
                       isOpen ? 'rotate-180' : ''
@@ -77,8 +66,8 @@ export const FAQSection: React.FC = () => {
                   />
                 </button>
                 {isOpen && (
-                  <p className="text-sm text-[#6B7263] leading-relaxed pb-5 pr-8">
-                    {faq.answer}
+                  <p className={`text-sm text-[#6B7263] leading-relaxed pb-5 pr-8 ${fontClass}`}>
+                    {t(a)}
                   </p>
                 )}
               </div>

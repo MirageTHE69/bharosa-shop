@@ -1,13 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import type { Category } from '@/types/database';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface CategoryGridSectionProps {
   categories: Category[];
 }
 
 export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
+  const { t, fontClass } = useLanguage();
+
   return (
     <section id="categories" className="py-16 sm:py-24 bg-[#FBF9F4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,17 +20,16 @@ export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-              Curated Collections
+            <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+              {t('categories.eyebrow')}
             </span>
-            <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-              Shop by Category
+            <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+              {t('categories.title')}
             </h2>
           </div>
 
-          <p className="text-sm text-[#6B7263] max-w-md">
-            Every category carries the Bharosa Verified Seal — each batch is tested for
-            230+ chemical residues before packaging.
+          <p className={`text-sm text-[#6B7263] max-w-md ${fontClass}`}>
+            {t('categories.desc')}
           </p>
         </div>
 
@@ -62,7 +66,7 @@ export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
 
               <div className="px-4 pb-4 pt-1 flex items-center gap-2 border-t border-[#E7E0CE] mt-2">
                 <span className="text-xs font-semibold text-[#3F7D46] flex items-center space-x-1 pt-3">
-                  <span>Explore</span>
+                  <span className={fontClass}>{t('categories.explore')}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </div>

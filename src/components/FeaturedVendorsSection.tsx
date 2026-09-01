@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { MapPin, Award, ArrowRight, Star, X } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 import { useAppShell } from '@/context/AppShellContext';
+import { useLanguage } from '@/context/LanguageContext';
 import type { Vendor } from '@/types/database';
 import { DEFAULT_VENDOR_AVATAR, DEFAULT_FARM_IMAGE } from '@/lib/constants';
 
@@ -14,6 +15,7 @@ interface FeaturedVendorsSectionProps {
 
 export const FeaturedVendorsSection: React.FC<FeaturedVendorsSectionProps> = ({ vendors }) => {
   const { openVerifyModal } = useAppShell();
+  const { t, fontClass } = useLanguage();
   const [selectedVendorModal, setSelectedVendorModal] = useState<Vendor | null>(null);
 
   return (
@@ -23,17 +25,16 @@ export const FeaturedVendorsSection: React.FC<FeaturedVendorsSectionProps> = ({ 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#3F7D46]">
-              Direct Producer Marketplace
+            <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
+              {t('vendors.eyebrow')}
             </span>
-            <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F]">
-              Our Verified Farmers & Artisans
+            <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
+              {t('vendors.title')}
             </h2>
           </div>
 
-          <p className="text-sm text-[#6B7263] max-w-md">
-            Meet the real families behind your daily food. Every seller passes on-site farm
-            inspections and holds verified organic credentials.
+          <p className={`text-sm text-[#6B7263] max-w-md ${fontClass}`}>
+            {t('vendors.desc')}
           </p>
         </div>
 
@@ -80,7 +81,7 @@ export const FeaturedVendorsSection: React.FC<FeaturedVendorsSectionProps> = ({ 
 
                 <div className="text-xs space-y-1 text-[#6B7263]">
                   <div className="flex items-center justify-between">
-                    <span>Specialty</span>
+                    <span className={fontClass}>{t('vendors.specialty')}</span>
                     <span className="text-[#24291F] font-medium truncate max-w-[120px]">{vendor.specialty}</span>
                   </div>
                 </div>
@@ -99,14 +100,14 @@ export const FeaturedVendorsSection: React.FC<FeaturedVendorsSectionProps> = ({ 
                   onClick={() => setSelectedVendorModal(vendor)}
                   className="w-full py-2 bg-[#F4EEE1] hover:bg-[#3F7D46] text-[#24291F] hover:text-white font-medium text-xs rounded-lg transition-colors flex items-center justify-center space-x-1.5"
                 >
-                  <span>Quick View</span>
+                  <span className={fontClass}>{t('vendors.quickView')}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <Link
                   href={`/farmer/${vendor.slug}`}
                   className="w-full py-2 border border-[#E7E0CE] hover:border-[#24291F]/40 text-[#24291F] font-medium text-xs rounded-lg transition-colors flex items-center justify-center space-x-1.5"
                 >
-                  <span>View Full Profile</span>
+                  <span className={fontClass}>{t('vendors.viewProfile')}</span>
                 </Link>
               </div>
             </div>
