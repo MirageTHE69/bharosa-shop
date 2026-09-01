@@ -21,11 +21,11 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#F4EEE1] text-[#24291F] border-t border-[#E7E0CE] pt-14 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <footer className="bg-[#F4EEE1] text-[#24291F] border-t border-[#E7E0CE] pt-10 pb-5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
 
         {/* Top Footer Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#E7E0CE] items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-7 border-b border-[#E7E0CE] items-center">
 
           <div className="lg:col-span-6 space-y-2.5">
             <div className="flex items-center">
@@ -133,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Copyright */}
-        <div className="pt-6 border-t border-[#E7E0CE] flex flex-col sm:flex-row items-center justify-between text-xs text-[#6B7263] gap-4">
+        <div className="pt-4 border-t border-[#E7E0CE] flex flex-col sm:flex-row items-center justify-between text-xs text-[#6B7263] gap-4">
           <p className={fontClass}>© {new Date().getFullYear()} Bharosa Shop Marketplace Pvt Ltd. {t('footer.rightsReserved')}</p>
           <div className={`flex items-center space-x-4 ${fontClass}`}>
             <a href="#" className="hover:text-[#24291F] transition-colors">{t('footer.privacyPolicy')}</a>

@@ -28,9 +28,9 @@ export function LanguageToggle() {
         onClick={() => setIsOpen((v) => !v)}
         aria-label={t('nav.language')}
         aria-expanded={isOpen}
-        className="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-[#24291F] font-medium text-sm hover:bg-[#F4EEE1] transition-colors"
+        className="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
       >
-        <Languages className="w-3.5 h-3.5 text-[#6B7263]" />
+        <Languages className="w-3.5 h-3.5 text-white/80" />
         <span>{active.nativeLabel}</span>
       </button>
 
