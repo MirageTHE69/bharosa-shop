@@ -43,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#24291F] border-b border-black/30 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 sm:h-32 flex items-center justify-between gap-4">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-32 flex items-center justify-between gap-2 sm:gap-4">
 
         {/* Logo */}
         <Link
@@ -51,16 +51,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center rounded-lg py-1 transition-opacity hover:opacity-90 shrink-0"
           aria-label="Bharosa Shop Home"
         >
-          {/* === NAVBAR LOGO SIZE: change 'h-24 sm:h-28' below to adjust size === */}
+          {/* === NAVBAR LOGO SIZE: change 'h-16 sm:h-28' below to adjust size === */}
           <img
             src="/logo.png"
             alt="Bharosa Shop"
-            className="h-24 sm:h-28 w-auto object-contain shrink-0"
+            className="h-16 sm:h-28 w-auto object-contain shrink-0"
           />
         </Link>
 
         {/* Desktop Search Bar */}
-        <div className="hidden lg:flex flex-1 max-w-sm mx-4">
+        <div className="hidden xl:flex flex-1 max-w-md mx-4">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7263]" />
             <input
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-white/90">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium text-white/90">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={onOpenVerifyModal}
-            className="hidden md:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
+            className="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>{t('nav.verifyBatch')}</span>
@@ -101,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {!user && (
             <button
               onClick={onOpenSellerModal}
-              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-white/35 text-white font-medium text-sm hover:bg-white/15 hover:border-white/60 transition-colors"
+              className="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-white/35 text-white font-medium text-sm hover:bg-white/15 hover:border-white/60 transition-colors"
             >
               <Store className="w-3.5 h-3.5" />
               <span>{t('nav.sellWithUs')}</span>
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {user && (user.role === 'vendor' || user.role === 'admin') && (
             <Link
               href={panelHref}
-              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-white/35 text-white font-medium text-sm hover:bg-white/15 hover:border-white/60 transition-colors"
+              className="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-white/35 text-white font-medium text-sm hover:bg-white/15 hover:border-white/60 transition-colors"
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
               <span>{user.role === 'admin' ? t('nav.admin') : t('nav.myPanel')}</span>
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
 
           {user ? (
-            <form action={signOut} className="hidden sm:block">
+            <form action={signOut} className="hidden lg:block">
               <button
                 type="submit"
                 className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           ) : (
             <Link
               href="/auth/sign-in"
-              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
+              className="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
             >
               <User className="w-3.5 h-3.5" />
               <span>{t('nav.signIn')}</span>
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-white hover:bg-white/15 transition-colors"
+            className="lg:hidden p-2 rounded-lg text-white hover:bg-white/15 transition-colors"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -161,8 +161,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Search Bar */}
-      <div className="lg:hidden px-4 pb-3">
+      {/* Mobile/Tablet Search Bar (shown until the desktop search bar takes over at xl:) */}
+      <div className="xl:hidden px-4 pb-3">
         <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7263]" />
           <input
@@ -177,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FBF9F4] border-t border-[#E7E0CE] px-4 py-5">
+        <div className="lg:hidden bg-[#FBF9F4] border-t border-[#E7E0CE] px-4 py-5">
           <nav className="flex flex-col">
             {navLinks.map((link) => (
               <Link
