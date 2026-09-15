@@ -39,7 +39,7 @@ export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
             <Link
               key={cat.id}
               href={`/category/${cat.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#E7E0CE] hover:border-[#24291F]/30 transition-colors flex flex-col justify-between"
+              className="group bg-white rounded-2xl overflow-hidden border border-[#E7E0CE] hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="relative h-40 overflow-hidden bg-[#F4EEE1]">

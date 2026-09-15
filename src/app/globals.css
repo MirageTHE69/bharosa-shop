@@ -40,6 +40,14 @@
   font-family: var(--font-noto-gujarati), 'Noto Sans Gujarati', serif;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .font-sans-body {
   font-family: var(--font-inter), 'Noto Sans Devanagari', sans-serif;
 }

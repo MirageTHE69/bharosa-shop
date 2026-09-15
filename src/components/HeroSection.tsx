@@ -46,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               <button
                 onClick={onShopClick}
-                className="px-6 py-3.5 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-base rounded-xl transition-colors flex items-center justify-center space-x-2 focus-visible:ring-2 focus-visible:ring-[#3F7D46]"
+                className="px-6 py-3.5 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-base rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 focus-visible:ring-2 focus-visible:ring-[#3F7D46]"
               >
                 <span>{t('hero.ctaShop')}</span>
                 <ArrowRight className="w-4 h-4" />

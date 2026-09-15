@@ -15,6 +15,12 @@ export const translations: Dictionary = {
     gu: 'શુદ્ધતાનું વચન',
   },
 
+  // Promo bar
+  'promo.delivery': { en: 'Free Delivery Across India', hi: 'पूरे भारत में मुफ्त डिलीवरी', gu: 'સમગ્ર ભારતમાં મફત ડિલિવરી' },
+  'promo.labTested': { en: 'NABL Lab-Tested Batches', hi: 'NABL लैब-परीक्षित बैच', gu: 'NABL લેબ-ટેસ્ટેડ બેચ' },
+  'promo.cod': { en: 'Cash on Delivery Available', hi: 'कैश ऑन डिलीवरी उपलब्ध', gu: 'કેશ ઓન ડિલિવરી ઉપલબ્ધ' },
+  'promo.vadodara': { en: 'Proudly Based in Vadodara', hi: 'गर्व से वडोदरा से', gu: 'ગર્વથી વડોદરાથી' },
+
   // Navbar
   'nav.shop': { en: 'Shop', hi: 'खरीदें', gu: 'ખરીદો' },
   'nav.howItWorks': { en: 'How It Works', hi: 'यह कैसे काम करता है', gu: 'તે કેવી રીતે કામ કરે છે' },

@@ -111,7 +111,7 @@ export const TrustProcessSection: React.FC<TrustProcessSectionProps> = ({
 
           <button
             onClick={onOpenVerifyModal}
-            className="px-5 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold rounded-xl transition-colors shrink-0 flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-white"
+            className="px-5 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all shrink-0 flex items-center space-x-2 focus-visible:ring-2 focus-visible:ring-white"
           >
             <ShieldCheck className="w-4 h-4" />
             <span className={fontClass}>{t('trust.launchVerifier')}</span>

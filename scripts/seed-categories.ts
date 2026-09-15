@@ -20,14 +20,14 @@ const CATEGORIES = [
     name_en: 'A2 Desi Cow Ghee',
     name_hi: 'A2 देसी गाय का बिलोना घी',
     description: 'Traditional Bilona churned ghee from free-grazing Gir and Sahiwal cows. NABL-tested A2 ghee, hand-churned and lab-verified.',
-    image_url: 'https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?auto=format&fit=crop&w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1573812461383-e5f8b759d12e?auto=format&fit=crop&w=800&q=80',
   },
   {
     slug: 'honey',
     name_en: 'Pure Wild Raw Honey',
     name_hi: 'जंगली प्राकृतिक कच्चा शहद',
     description: 'Unfiltered, unheated forest honey collected by traditional tribal honey gatherers. Lab-tested raw honey online, direct from farmers.',
-    image_url: 'https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1568657704598-602700bd9694?auto=format&fit=crop&w=800&q=80',
   },
   {
     slug: 'oils',
@@ -48,7 +48,7 @@ const CATEGORIES = [
     name_en: 'Unpolished Organic Dals',
     name_hi: 'बिना पॉलिश की जैविक दालें',
     description: 'Hand-split organic Toor, Chana, Moong, and Urad dal grown without chemical fertilizers.',
-    image_url: 'https://images.unsplash.com/photo-1585994191611-72d373321524?auto=format&fit=crop&w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1638378545909-d78bd9b4271c?auto=format&fit=crop&w=800&q=80',
   },
   {
     slug: 'teas',
@@ -62,7 +62,7 @@ const CATEGORIES = [
     name_en: 'Sun-Dried Fruits & Nuts',
     name_hi: 'कश्मीर के प्राकृतिक मेवे',
     description: 'Kashmiri Mamra almonds, organic walnuts, and sun-dried figs direct from growers.',
-    image_url: 'https://images.unsplash.com/photo-1508061252966-f7274022b54d?auto=format&fit=crop&w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1543158181-1274e5362710?auto=format&fit=crop&w=800&q=80',
   },
 ];
 

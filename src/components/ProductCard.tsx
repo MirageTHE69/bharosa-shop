@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag, CheckCircle2 } from 'lucide-react';
+import { ShoppingBag, CheckCircle2, Star, ShieldCheck } from 'lucide-react';
 import { useAppShell } from '@/context/AppShellContext';
 import type { ProductWithVendor } from '@/types/database';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
@@ -9,18 +9,34 @@ import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
 export function ProductCard({ product }: { product: ProductWithVendor }) {
   const { addToCart } = useAppShell();
 
+  const discountPct =
+    product.original_price && product.original_price > product.price
+      ? Math.round(((product.original_price - product.price) / product.original_price) * 100)
+      : null;
+
   return (
     <Link
       href={`/product/${product.slug}`}
-      className="bg-white rounded-2xl border border-[#E7E0CE] hover:border-[#24291F]/30 transition-colors overflow-hidden flex flex-col justify-between group"
+      className="bg-white rounded-2xl border border-[#E7E0CE] hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
     >
       <div>
-        <div className="relative h-40 bg-[#F4EEE1] overflow-hidden">
+        <div className="relative h-44 bg-[#F4EEE1] overflow-hidden">
           <img
             src={product.image_url ?? DEFAULT_PRODUCT_IMAGE}
             alt={product.title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
+
+          {discountPct && (
+            <div className="absolute top-2 left-2 bg-[#C4611E] text-white text-[11px] font-bold px-2 py-1 rounded-lg shadow-sm">
+              {discountPct}% OFF
+            </div>
+          )}
+
+          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/95 text-[#3F7D46] flex items-center justify-center shadow-sm" title="Bharosa Verified">
+            <ShieldCheck className="w-4 h-4" strokeWidth={2.5} />
+          </div>
+
           {product.batch_code && (
             <div className="absolute bottom-2 right-2 bg-[#24291F]/70 text-white text-[10px] font-mono px-2 py-0.5 rounded-full">
               {product.batch_code}
@@ -40,6 +56,16 @@ export function ProductCard({ product }: { product: ProductWithVendor }) {
 
           {product.hindi_title && (
             <div className="font-devanagari text-xs text-[#6B7263]">{product.hindi_title}</div>
+          )}
+
+          {product.rating > 0 && (
+            <div className="flex items-center space-x-1 text-xs pt-0.5">
+              <Star className="w-3.5 h-3.5 text-[#C4611E] fill-current" />
+              <span className="font-semibold text-[#24291F]">{product.rating.toFixed(1)}</span>
+              {product.reviews > 0 && (
+                <span className="text-[#6B7263]">({product.reviews})</span>
+              )}
+            </div>
           )}
 
           {product.lab_pesticide_ppm && (

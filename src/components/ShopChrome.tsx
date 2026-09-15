@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
+import { PromoBar } from '@/components/PromoBar';
 import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
 import { VerificationModal } from '@/components/VerificationModal';
@@ -34,6 +35,7 @@ export function ShopChrome({ children, user, verifyProducts }: ShopChromeProps) 
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FBF9F4] text-[#24291F]">
+      <PromoBar />
       <Navbar
         cartCount={cartCount}
         onOpenCart={openCart}

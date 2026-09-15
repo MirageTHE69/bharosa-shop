@@ -43,7 +43,7 @@ export const WhyBharosaSection: React.FC = () => {
           {VALUE_PROPOSITIONS.map((pillar) => (
             <div
               key={pillar.id}
-              className="rounded-2xl p-6 border border-[#E7E0CE] hover:border-[#24291F]/30 transition-colors space-y-3"
+              className="rounded-2xl p-6 border border-[#E7E0CE] bg-white hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 space-y-3"
             >
               <div className="w-11 h-11 rounded-xl bg-[#F4EEE1] flex items-center justify-center">
                 {getIcon(pillar.icon)}

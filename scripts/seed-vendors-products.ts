@@ -115,7 +115,7 @@ const PRODUCTS = [
     price: 380,
     original_price: 450,
     weight: '250 g',
-    image_url: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+    image_url: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=800&q=80',
     rating: 4.9,
     reviews: 184,
     batch_code: 'BHAROSA-2026-TURM-88',

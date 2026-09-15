@@ -49,7 +49,7 @@ export const VendorCalloutSection: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
             <button
               onClick={openSellerModal}
-              className="w-full sm:w-auto px-7 py-3.5 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-base rounded-xl transition-colors flex items-center justify-center space-x-2 focus-visible:ring-2 focus-visible:ring-white"
+              className="w-full sm:w-auto px-7 py-3.5 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-base rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 focus-visible:ring-2 focus-visible:ring-white"
             >
               <span className={fontClass}>{t('vendorCallout.cta')}</span>
               <ArrowRight className="w-4 h-4" />
