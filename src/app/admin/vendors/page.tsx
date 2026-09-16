@@ -36,10 +36,10 @@ export default async function AdminVendorsPage({ searchParams }: AdminVendorsPag
             <Link
               key={f.value}
               href={f.value === 'all' ? '/admin/vendors' : `/admin/vendors?status=${f.value}`}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors ${
                 (activeStatus ?? 'all') === f.value
                   ? 'bg-[#24291F] text-white'
-                  : 'bg-white border border-[#E7E0CE] text-[#24291F] hover:border-[#24291F]/40'
+                  : 'bg-white text-[#24291F] hover:bg-[#F4EEE1] shadow-sm'
               }`}
             >
               {f.label}
@@ -49,11 +49,11 @@ export default async function AdminVendorsPage({ searchParams }: AdminVendorsPag
       </div>
 
       {vendors.length === 0 ? (
-        <div className="bg-white border border-[#E7E0CE] rounded-2xl p-10 text-center text-sm text-[#6B7263]">
+        <div className="bg-white rounded-3xl p-10 text-center text-sm text-[#6B7263] shadow-sm">
           No vendors found.
         </div>
       ) : (
-        <div className="bg-white border border-[#E7E0CE] rounded-2xl divide-y divide-[#E7E0CE]">
+        <div className="bg-white rounded-3xl divide-y divide-[#F4EEE1] shadow-sm overflow-hidden">
           {vendors.map((vendor) => (
             <Link
               key={vendor.id}

@@ -23,7 +23,7 @@ export const SellerRegistrationModal: React.FC<SellerRegistrationModalProps> = (
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#24291F]/70 backdrop-blur-sm">
-      <div className="relative w-full max-w-xl bg-white text-[#24291F] rounded-2xl shadow-xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-white text-[#24291F] rounded-3xl shadow-xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
 
         <div className="flex items-center justify-between border-b border-[#E7E0CE] pb-4">
           <div className="flex items-center space-x-3">
@@ -65,7 +65,7 @@ export const SellerRegistrationModal: React.FC<SellerRegistrationModalProps> = (
             </p>
             <button
               onClick={onClose}
-              className="px-5 py-2.5 bg-[#24291F] text-white font-semibold text-sm rounded-lg"
+              className="px-5 py-2.5 bg-[#24291F] text-white font-semibold text-sm rounded-full"
             >
               Close
             </button>
@@ -182,7 +182,7 @@ export const SellerRegistrationModal: React.FC<SellerRegistrationModalProps> = (
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-full py-3 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold rounded-lg transition-colors flex items-center justify-center space-x-2"
+                className="w-full py-3 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
               >
                 <Send className="w-4 h-4" />
                 <span>{isPending ? 'Submitting…' : 'Submit Seller Application'}</span>

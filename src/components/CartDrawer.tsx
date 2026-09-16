@@ -102,7 +102,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               items.map((item) => (
                 <div
                   key={item.product.id}
-                  className="bg-white rounded-xl p-3 border border-[#E7E0CE] flex space-x-3"
+                  className="bg-white rounded-2xl p-3 shadow-sm flex space-x-3"
                 >
                   <img
                     src={item.product.image_url ?? DEFAULT_PRODUCT_IMAGE}
@@ -194,7 +194,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
               <button
                 onClick={() => alert('Order Placed Successfully! Bharosa Verified Farm Receipt generated.')}
-                className="w-full py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
+                className="w-full py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
               >
                 <span>Proceed to Secure Checkout</span>
                 <ArrowRight className="w-4 h-4" />

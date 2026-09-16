@@ -50,8 +50,8 @@ function StatCard({
   return (
     <Link
       href={href}
-      className={`block bg-white border rounded-2xl p-5 transition-colors ${
-        highlight ? 'border-[#C4611E]' : 'border-[#E7E0CE] hover:border-[#24291F]/30'
+      className={`block rounded-3xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 ${
+        highlight ? 'bg-[#FDF1E8]' : 'bg-white'
       }`}
     >
       <Icon className={`w-5 h-5 mb-2 ${highlight ? 'text-[#C4611E]' : 'text-[#6B7263]'}`} />

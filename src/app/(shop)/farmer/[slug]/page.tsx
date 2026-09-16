@@ -48,7 +48,7 @@ export default async function FarmerPage({ params }: FarmerPageProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-16">
           <div className="lg:col-span-4 space-y-4">
-            <div className="bg-white border border-[#E7E0CE] rounded-2xl p-5 space-y-3">
+            <div className="bg-white rounded-3xl p-5 space-y-3 shadow-sm">
               <TrustSealBadge size="md" />
 
               <div className="flex items-center space-x-1.5 text-sm text-[#6B7263]">
@@ -88,7 +88,7 @@ export default async function FarmerPage({ params }: FarmerPageProps) {
             </div>
 
             {vendor.story && (
-              <div className="bg-white border border-[#E7E0CE] rounded-2xl p-5">
+              <div className="bg-white rounded-3xl p-5 shadow-sm">
                 <h2 className="text-xs font-bold uppercase tracking-wider text-[#6B7263] mb-2">
                   Farmer Story
                 </h2>
@@ -103,7 +103,7 @@ export default async function FarmerPage({ params }: FarmerPageProps) {
             </h2>
 
             {products.length === 0 ? (
-              <p className="text-sm text-[#6B7263] bg-[#F4EEE1] rounded-2xl p-8 text-center">
+              <p className="text-sm text-[#6B7263] bg-[#F4EEE1] rounded-3xl p-8 text-center">
                 No live products yet from this farmer.
               </p>
             ) : (

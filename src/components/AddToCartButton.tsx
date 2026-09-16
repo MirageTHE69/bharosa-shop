@@ -10,7 +10,7 @@ export function AddToCartButton({ product }: { product: Product }) {
   return (
     <button
       onClick={() => addToCart(product)}
-      className="px-6 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md transition-all flex items-center space-x-2"
+      className="px-6 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center space-x-2"
     >
       <ShoppingBag className="w-4 h-4" />
       <span>Add to Basket</span>

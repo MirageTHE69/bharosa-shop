@@ -26,7 +26,7 @@ export function ProductApprovalActions({ productId }: { productId: string }) {
           });
         }}
         disabled={isApproving}
-        className="w-full px-4 py-2.5 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors flex items-center justify-center space-x-2"
+        className="w-full px-4 py-2.5 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
       >
         <CheckCircle2 className="w-4 h-4" />
         <span>{isApproving ? 'Approving…' : 'Approve Product'}</span>
@@ -52,7 +52,7 @@ export function ProductApprovalActions({ productId }: { productId: string }) {
           <button
             type="submit"
             disabled={isRejecting}
-            className="w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors flex items-center justify-center space-x-2"
+            className="w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
           >
             <XCircle className="w-4 h-4" />
             <span>Confirm Reject</span>

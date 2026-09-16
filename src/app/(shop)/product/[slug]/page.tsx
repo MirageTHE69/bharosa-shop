@@ -30,7 +30,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5">
-          <div className="relative rounded-2xl overflow-hidden bg-[#F4EEE1] aspect-square">
+          <div className="relative rounded-3xl overflow-hidden bg-[#F4EEE1] aspect-square">
             <img
               src={product.image_url ?? DEFAULT_PRODUCT_IMAGE}
               alt={product.title}
@@ -72,7 +72,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <AddToCartButton product={product} />
 
-          <div className="bg-[#F4EEE1] rounded-2xl p-5 space-y-3">
+          <div className="bg-[#F4EEE1] rounded-3xl p-5 space-y-3">
             <div className="flex items-center space-x-2 text-sm font-semibold text-[#24291F]">
               <CheckCircle2 className="w-4 h-4 text-[#3F7D46]" />
               <span>Lab Verification</span>

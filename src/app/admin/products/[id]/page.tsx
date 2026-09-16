@@ -39,7 +39,7 @@ export default async function AdminProductDetailPage({ params }: AdminProductDet
         <AdminDeleteProductButton productId={product.id} />
       </div>
 
-      <div className="bg-white border border-[#E7E0CE] rounded-2xl p-6 grid grid-cols-1 sm:grid-cols-12 gap-6">
+      <div className="bg-white rounded-3xl p-6 grid grid-cols-1 sm:grid-cols-12 gap-6 shadow-sm">
         <div className="sm:col-span-4">
           <img
             src={product.image_url ?? DEFAULT_PRODUCT_IMAGE}

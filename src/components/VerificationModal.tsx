@@ -42,7 +42,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-[#24291F]/60 backdrop-blur-sm">
 
       {/* Modal Card Box */}
-      <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden my-8">
+      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-xl overflow-hidden my-8">
 
         {/* Modal Top Banner Header */}
         <div className="bg-[#24291F] text-white p-5 flex items-center justify-between">
@@ -108,7 +108,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
             <button
               type="submit"
               disabled={isVerifying}
-              className="absolute right-1.5 top-1.5 px-4 py-1.5 bg-[#3F7D46] hover:bg-[#2A5C31] text-white font-semibold text-xs rounded-lg transition-colors"
+              className="absolute right-1.5 top-1.5 px-4 py-1.5 bg-[#3F7D46] hover:bg-[#2A5C31] text-white font-semibold text-xs rounded-full transition-colors"
             >
               {isVerifying ? 'Scanning...' : 'Verify Code'}
             </button>
@@ -116,7 +116,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
 
           {/* Verified Certificate Card Result */}
           {currentProduct ? (
-            <div className="bg-[#F4EEE1] rounded-2xl p-6 relative overflow-hidden">
+            <div className="bg-[#F4EEE1] rounded-3xl p-6 relative overflow-hidden">
 
               <div className="absolute top-4 right-4 z-10">
                 <TrustSealBadge size="md" showLabel={true} />
@@ -184,7 +184,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
               </div>
             </div>
           ) : (
-            <div className="bg-[#F4EEE1] rounded-2xl p-8 text-center text-sm text-[#6B7263]">
+            <div className="bg-[#F4EEE1] rounded-3xl p-8 text-center text-sm text-[#6B7263]">
               No batch code matched. Try one of the sample codes above.
             </div>
           )}
@@ -197,7 +197,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
 
             <button
               onClick={onClose}
-              className="px-5 py-2.5 bg-[#24291F] hover:bg-[#3F7D46] text-white font-semibold text-sm rounded-lg transition-colors w-full sm:w-auto shrink-0"
+              className="px-5 py-2.5 bg-[#24291F] hover:bg-[#3F7D46] text-white font-semibold text-sm rounded-full transition-colors w-full sm:w-auto shrink-0"
             >
               Done
             </button>

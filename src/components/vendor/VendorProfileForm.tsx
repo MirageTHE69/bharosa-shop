@@ -19,7 +19,7 @@ export function VendorProfileForm({ vendor, action = updateVendorProfile, isAdmi
   const [state, formAction, isPending] = useActionState(action, initialState);
 
   return (
-    <form action={formAction} className="space-y-5 bg-white border border-[#E7E0CE] rounded-2xl p-6">
+    <form action={formAction} className="space-y-5 bg-white rounded-3xl p-6 shadow-sm">
       <div>
         <label className="block text-xs font-semibold text-[#6B7263] mb-1">Farm / Business Name *</label>
         <input
@@ -136,7 +136,7 @@ export function VendorProfileForm({ vendor, action = updateVendorProfile, isAdmi
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors flex items-center justify-center space-x-2"
+        className="w-full py-3 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2"
       >
         <Save className="w-4 h-4" />
         <span>{isPending ? 'Saving…' : 'Save Profile'}</span>

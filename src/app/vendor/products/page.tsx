@@ -21,12 +21,12 @@ export default async function VendorProductsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <h1 className="font-serif-display text-2xl font-bold text-[#24291F]">My Products</h1>
         {vendor?.status === 'verified' && (
           <Link
             href="/vendor/products/new"
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-lg transition-colors"
+            className="inline-flex items-center space-x-2 px-4 py-2 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Add Product</span>
@@ -35,13 +35,13 @@ export default async function VendorProductsPage() {
       </div>
 
       {products.length === 0 ? (
-        <div className="bg-white border border-[#E7E0CE] rounded-2xl p-10 text-center text-sm text-[#6B7263]">
+        <div className="bg-white rounded-3xl p-10 text-center text-sm text-[#6B7263] shadow-sm">
           {vendor?.status === 'verified'
             ? "You haven't added any products yet."
             : 'Your products will appear here once you can start listing.'}
         </div>
       ) : (
-        <div className="bg-white border border-[#E7E0CE] rounded-2xl divide-y divide-[#E7E0CE]">
+        <div className="bg-white rounded-3xl divide-y divide-[#F4EEE1] shadow-sm overflow-hidden">
           {products.map((product) => (
             <div key={product.id} className="p-4 flex items-center gap-4">
               <img

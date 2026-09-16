@@ -33,7 +33,7 @@ export default async function AdminVendorDetailPage({ params }: AdminVendorDetai
         <span>Back to Vendors</span>
       </Link>
 
-      <div className="bg-white border border-[#E7E0CE] rounded-2xl p-6 space-y-5">
+      <div className="bg-white rounded-3xl p-6 space-y-5 shadow-sm">
         <div className="flex items-start justify-between flex-wrap gap-4">
           <div className="flex items-center space-x-4">
             <img

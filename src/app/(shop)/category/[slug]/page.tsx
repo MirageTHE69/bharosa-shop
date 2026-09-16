@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         )}
 
         {products.length === 0 ? (
-          <p className="text-sm text-[#6B7263] bg-[#F4EEE1] rounded-2xl p-8 text-center">
+          <p className="text-sm text-[#6B7263] bg-[#F4EEE1] rounded-3xl p-8 text-center">
             No verified products in this category yet — check back soon.
           </p>
         ) : (

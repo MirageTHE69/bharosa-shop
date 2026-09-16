@@ -37,7 +37,7 @@ export default async function VendorDashboardPage() {
       {vendor?.status === 'verified' && (
         <Link
           href="/vendor/products/new"
-          className="inline-flex items-center space-x-2 px-5 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-xl transition-colors"
+          className="inline-flex items-center space-x-2 px-5 py-3 bg-[#C4611E] hover:bg-[#A84E15] text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Add a New Product</span>
@@ -66,7 +66,7 @@ function StatCard({
   }[tone];
 
   return (
-    <div className="bg-white border border-[#E7E0CE] rounded-2xl p-4">
+    <div className="bg-white rounded-3xl p-4 shadow-sm">
       <Icon className={`w-5 h-5 mb-2 ${toneClasses}`} />
       <div className="text-2xl font-bold text-[#24291F]">{value}</div>
       <div className="text-xs text-[#6B7263]">{label}</div>

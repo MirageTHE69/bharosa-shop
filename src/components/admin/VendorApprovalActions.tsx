@@ -21,17 +21,17 @@ export function VendorApprovalActions({ vendorId }: { vendorId: string }) {
         <label className="block text-xs font-semibold text-[#6B7263]">
           Certification ID to issue (optional)
         </label>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
             name="certificationId"
             placeholder="e.g. NPOP/IND/2026/00123"
-            className="flex-1 px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-[#3F7D46] focus:outline-none"
+            className="flex-1 min-w-0 px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-[#3F7D46] focus:outline-none"
           />
           <button
             type="submit"
             disabled={isApproving}
-            className="px-4 py-2.5 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors flex items-center space-x-2 shrink-0"
+            className="px-4 py-2.5 bg-[#3F7D46] hover:bg-[#2A5C31] disabled:opacity-60 text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 shrink-0"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>Approve Vendor</span>
@@ -50,18 +50,18 @@ export function VendorApprovalActions({ vendorId }: { vendorId: string }) {
       ) : (
         <form action={rejectAction} className="space-y-2">
           <label className="block text-xs font-semibold text-[#6B7263]">Rejection Reason</label>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="text"
               name="reason"
               required
               placeholder="e.g. Certification documents unclear"
-              className="flex-1 px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-red-400 focus:outline-none"
+              className="flex-1 min-w-0 px-3.5 py-2.5 rounded-lg bg-[#F4EEE1] border border-transparent text-sm text-[#24291F] focus:ring-2 focus:ring-red-400 focus:outline-none"
             />
             <button
               type="submit"
               disabled={isRejecting}
-              className="px-4 py-2.5 bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors flex items-center space-x-2 shrink-0"
+              className="px-4 py-2.5 bg-red-600 hover:bg-red-700 disabled:opacity-60 text-white font-semibold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 shrink-0"
             >
               <XCircle className="w-4 h-4" />
               <span>Confirm Reject</span>
