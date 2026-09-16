@@ -29,11 +29,11 @@ export const Footer: React.FC<FooterProps> = ({
 
           <div className="lg:col-span-6 space-y-2.5">
             <div className="flex items-center">
-              {/* === FOOTER LOGO SIZE: change 'h-20 sm:h-24' below (e.g. h-16, h-24, h-28) to adjust size === */}
+              {/* === FOOTER LOGO SIZE: change 'h-24 sm:h-28' below (e.g. h-20, h-24, h-28) to adjust size === */}
               <img
                 src="/logo.png"
                 alt="Bharosa Shop"
-                className="h-20 sm:h-24 w-auto object-contain"
+                className="h-24 sm:h-28 w-auto object-contain"
               />
             </div>
 

@@ -30,13 +30,13 @@ export default async function FarmerPage({ params }: FarmerPageProps) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="-mt-12 relative flex items-end space-x-4 pb-8">
+        <div className="relative pb-8">
           <img
             src={vendor.avatar_url ?? DEFAULT_VENDOR_AVATAR}
             alt={vendor.name}
-            className="w-24 h-24 rounded-2xl border-4 border-[#FBF9F4] object-cover shadow-md"
+            className="absolute -top-12 left-0 w-24 h-24 rounded-2xl border-4 border-[#FBF9F4] object-cover shadow-md"
           />
-          <div className="pb-1">
+          <div className="pt-4 pl-28">
             <h1 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#24291F]">
               {vendor.name}
             </h1>
