@@ -21,6 +21,9 @@ export const translations: Dictionary = {
   'promo.cod': { en: 'Cash on Delivery Available', hi: 'कैश ऑन डिलीवरी उपलब्ध', gu: 'કેશ ઓન ડિલિવરી ઉપલબ્ધ' },
   'promo.vadodara': { en: 'Proudly Based in Vadodara', hi: 'गर्व से वडोदरा से', gu: 'ગર્વથી વડોદરાથી' },
 
+  // Category pill nav
+  'pillnav.all': { en: 'All Products', hi: 'सभी उत्पाद', gu: 'બધા ઉત્પાદનો' },
+
   // Navbar
   'nav.shop': { en: 'Shop', hi: 'खरीदें', gu: 'ખરીદો' },
   'nav.howItWorks': { en: 'How It Works', hi: 'यह कैसे काम करता है', gu: 'તે કેવી રીતે કામ કરે છે' },

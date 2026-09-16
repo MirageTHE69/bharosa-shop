@@ -43,7 +43,7 @@ export const FeaturedVendorsSection: React.FC<FeaturedVendorsSectionProps> = ({ 
           {vendors.map((vendor) => (
             <div
               key={vendor.id}
-              className="bg-white rounded-2xl border border-[#E7E0CE] hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
+              className="bg-white rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
             >
               <Link href={`/farmer/${vendor.slug}`} className="relative h-32 overflow-hidden bg-[#F4EEE1] block">
                 <img

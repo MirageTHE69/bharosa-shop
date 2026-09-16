@@ -39,7 +39,7 @@ export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
             <Link
               key={cat.id}
               href={`/category/${cat.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#E7E0CE] hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between"
+              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="relative h-40 overflow-hidden bg-[#F4EEE1]">
@@ -64,8 +64,8 @@ export function CategoryGridSection({ categories }: CategoryGridSectionProps) {
                 </div>
               </div>
 
-              <div className="px-4 pb-4 pt-1 flex items-center gap-2 border-t border-[#E7E0CE] mt-2">
-                <span className="text-xs font-semibold text-[#3F7D46] flex items-center space-x-1 pt-3">
+              <div className="px-4 pb-4 flex items-center gap-2">
+                <span className="text-xs font-semibold text-[#3F7D46] flex items-center space-x-1">
                   <span className={fontClass}>{t('categories.explore')}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>

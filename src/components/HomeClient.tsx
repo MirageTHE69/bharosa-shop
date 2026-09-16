@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { HeroSection } from '@/components/HeroSection';
+import { CategoryPillNav } from '@/components/CategoryPillNav';
 import { HindiDivider } from '@/components/HindiDivider';
 import { TrustProcessSection } from '@/components/TrustProcessSection';
 import { CategoryGridSection } from '@/components/CategoryGridSection';
@@ -34,6 +35,9 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
     <>
       {/* 1. Hero Section */}
       <HeroSection onShopClick={scrollToCategories} onVerifyClick={openVerifyModal} />
+
+      {/* 1b. Quick Category Filter Pills */}
+      <CategoryPillNav categories={categories} />
 
       {/* 2. Hindi Slogan Divider */}
       <HindiDivider
@@ -134,7 +138,7 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
                 product: 'Wild Forest Raw Honey',
               },
             ].map((rev, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl border border-[#E7E0CE] shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 space-y-3">
+              <div key={i} className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 space-y-3">
                 <div className="flex text-[#C4611E]">
                   {[...Array(5)].map((_, idx) => (
                     <Star key={idx} className="w-3.5 h-3.5 fill-current" />

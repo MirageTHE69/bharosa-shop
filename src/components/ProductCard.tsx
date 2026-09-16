@@ -17,7 +17,7 @@ export function ProductCard({ product }: { product: ProductWithVendor }) {
   return (
     <Link
       href={`/product/${product.slug}`}
-      className="bg-white rounded-2xl border border-[#E7E0CE] hover:border-[#24291F]/20 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
+      className="bg-white rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
     >
       <div>
         <div className="relative h-44 bg-[#F4EEE1] overflow-hidden">
@@ -77,7 +77,7 @@ export function ProductCard({ product }: { product: ProductWithVendor }) {
         </div>
       </div>
 
-      <div className="p-4 pt-2 flex items-center justify-between border-t border-[#E7E0CE] mt-2">
+      <div className="p-4 pt-1 flex items-center justify-between">
         <div>
           <span className="text-base font-bold text-[#24291F]">₹{product.price}</span>
           {product.original_price && (
@@ -90,7 +90,7 @@ export function ProductCard({ product }: { product: ProductWithVendor }) {
             e.preventDefault();
             addToCart(product);
           }}
-          className="px-3 py-1.5 bg-[#F4EEE1] hover:bg-[#C4611E] text-[#24291F] hover:text-white font-medium text-xs rounded-lg transition-colors flex items-center space-x-1.5"
+          className="px-3.5 py-1.5 bg-[#F4EEE1] hover:bg-[#C4611E] text-[#24291F] hover:text-white font-medium text-xs rounded-full transition-colors flex items-center space-x-1.5"
         >
           <ShoppingBag className="w-3.5 h-3.5" />
           <span>Add</span>
