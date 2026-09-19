@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowUp, ShieldCheck, Mail, Phone, MapPin } from 'lucide-react';
 import { TrustSealBadge } from './TrustSealBadge';
 import { useLanguage } from '@/context/LanguageContext';
@@ -62,22 +63,23 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="space-y-3">
             <h4 className={`font-semibold text-sm text-white ${fontClass}`}>{t('footer.categoriesHeading')}</h4>
             <ul className={`space-y-2 text-white/60 ${fontClass}`}>
-              <li><a href="#categories" className="hover:text-white transition-colors">{t('footer.cat1')}</a></li>
-              <li><a href="#categories" className="hover:text-white transition-colors">{t('footer.cat2')}</a></li>
-              <li><a href="#categories" className="hover:text-white transition-colors">{t('footer.cat3')}</a></li>
-              <li><a href="#categories" className="hover:text-white transition-colors">{t('footer.cat4')}</a></li>
-              <li><a href="#categories" className="hover:text-white transition-colors">{t('footer.cat5')}</a></li>
+              <li><Link href="/#categories" className="hover:text-white transition-colors">{t('footer.cat1')}</Link></li>
+              <li><Link href="/#categories" className="hover:text-white transition-colors">{t('footer.cat2')}</Link></li>
+              <li><Link href="/#categories" className="hover:text-white transition-colors">{t('footer.cat3')}</Link></li>
+              <li><Link href="/#categories" className="hover:text-white transition-colors">{t('footer.cat4')}</Link></li>
+              <li><Link href="/#categories" className="hover:text-white transition-colors">{t('footer.cat5')}</Link></li>
             </ul>
           </div>
 
           <div className="space-y-3">
             <h4 className={`font-semibold text-sm text-white ${fontClass}`}>{t('footer.trustHeading')}</h4>
             <ul className={`space-y-2 text-white/60 ${fontClass}`}>
-              <li><a href="#trust-process" className="hover:text-white transition-colors">{t('footer.trustLink1')}</a></li>
+              <li><Link href="/#trust-process" className="hover:text-white transition-colors">{t('footer.trustLink1')}</Link></li>
               <li><button onClick={onOpenVerifyModal} className="hover:text-white transition-colors text-left">{t('footer.trustLink2')}</button></li>
-              <li><a href="#vendors" className="hover:text-white transition-colors">{t('footer.trustLink3')}</a></li>
+              <li><Link href="/#vendors" className="hover:text-white transition-colors">{t('footer.trustLink3')}</Link></li>
               <li><button onClick={onOpenSellerModal} className="hover:text-white transition-colors text-left">{t('footer.trustLink4')}</button></li>
-              <li><a href="#why-us" className="hover:text-white transition-colors">{t('footer.trustLink5')}</a></li>
+              <li><Link href="/farmer-agreement" className="hover:text-white transition-colors">{t('footer.farmerAgreement')}</Link></li>
+              <li><Link href="/#why-us" className="hover:text-white transition-colors">{t('footer.trustLink5')}</Link></li>
             </ul>
           </div>
 

@@ -250,7 +250,89 @@ export const translations: Dictionary = {
     gu: 'સમગ્ર ભારતમાં 45,000+ રસોડાનો ભરોસો',
   },
 
+  // Farmer agreement — homepage summary section
+  'agrSection.eyebrow': { en: 'Seller Terms', hi: 'विक्रेता शर्तें', gu: 'વિક્રેતા શરતો' },
+  'agrSection.title': {
+    en: 'Our Farmer Supply & Quality Agreement',
+    hi: 'हमारा किसान आपूर्ति एवं गुणवत्ता अनुबंध',
+    gu: 'અમારો ખેડૂત સપ્લાય અને ગુણવત્તા કરાર',
+  },
+  'agrSection.desc': {
+    en: 'Every farmer and seller on Bharosa Shop works under one clear, tri-lingual agreement — so quality standards, lab testing, payouts, and returns are transparent from day one.',
+    hi: 'भरोसा शॉप पर हर किसान और विक्रेता एक स्पष्ट, त्रिभाषी अनुबंध के तहत काम करता है — ताकि गुणवत्ता मानक, लैब जांच, भुगतान और रिटर्न पहले दिन से पारदर्शी रहें।',
+    gu: 'ભરોસા શોપ પરનો દરેક ખેડૂત અને વિક્રેતા એક સ્પષ્ટ, ત્રિભાષી કરાર હેઠળ કામ કરે છે — જેથી ગુણવત્તાના ધોરણો, લેબ ટેસ્ટિંગ, પેમેન્ટ અને રિટર્ન પહેલા દિવસથી પારદર્શક રહે.',
+  },
+  'agrSection.cta': { en: 'Read Full Agreement', hi: 'पूरा अनुबंध पढ़ें', gu: 'સંપૂર્ણ કરાર વાંચો' },
+  'agrSection.note': {
+    en: 'Available in English, Gujarati & Hindi · PDF download included',
+    hi: 'अंग्रेज़ी, गुजराती एवं हिन्दी में उपलब्ध · PDF डाउनलोड सहित',
+    gu: 'અંગ્રેજી, ગુજરાતી અને હિન્દીમાં ઉપલબ્ધ · PDF ડાઉનલોડ સાથે',
+  },
+  'agrSection.disclaimer': {
+    en: 'This is a short summary. Please read the full agreement for complete terms.',
+    hi: 'यह एक संक्षिप्त सारांश है। पूर्ण शर्तों के लिए कृपया पूरा अनुबंध पढ़ें।',
+    gu: 'આ એક ટૂંકો સારાંશ છે. સંપૂર્ણ શરતો માટે કૃપા કરીને સંપૂર્ણ કરાર વાંચો.',
+  },
+  'agrSection.p1.title': { en: '100% chemical-free warranty', hi: '100% रसायन-मुक्त गारंटी', gu: '૧૦૦% કેમિકલ મુક્ત ખાતરી' },
+  'agrSection.p1.desc': {
+    en: 'Products must be free of synthetic fertilizers, toxic pesticides, carbide, and adulterants.',
+    hi: 'उत्पाद रासायनिक उर्वरक, कीटनाशक, कार्बाइड और मिलावट से मुक्त होने चाहिए।',
+    gu: 'ઉત્પાદનો રાસાયણિક ખાતર, ઝેરી જંતુનાશકો, કાર્બાઇડ અને ભેળસેળથી મુક્ત હોવા જોઈએ.',
+  },
+  'agrSection.p2.title': { en: 'Random NABL lab testing', hi: 'रैंडम NABL लैब जांच', gu: 'રેન્ડમ NABL લેબ ટેસ્ટિંગ' },
+  'agrSection.p2.desc': {
+    en: 'Any batch can be sampled at any stage. Bharosa pays if it passes; the seller pays if it fails.',
+    hi: 'किसी भी बैच का किसी भी चरण में नमूना लिया जा सकता है। पास होने पर खर्च भरोसा वहन करता है; फेल होने पर विक्रेता।',
+    gu: 'કોઈપણ બેચનું કોઈપણ તબક્કે સેમ્પલ લઈ શકાય છે. પાસ થાય તો ખર્ચ ભરોસા ભોગવે છે; ફેલ થાય તો વિક્રેતા.',
+  },
+  'agrSection.p3.title': { en: '1-week payment cycle', hi: '1 सप्ताह का भुगतान चक्र', gu: '૧ અઠવાડિયાનું પેમેન્ટ સાયકલ' },
+  'agrSection.p3.desc': {
+    en: 'Paid 1 week (7 business days) after successful delivery, once the customer is satisfied and there is no dispute.',
+    hi: 'सफल डिलीवरी के 1 सप्ताह (7 दिन) बाद, ग्राहक की संतुष्टि और कोई विवाद न होने पर भुगतान किया जाता है।',
+    gu: 'સફળ ડિલિવરીના ૧ અઠવાડિયા (૭ દિવસ) પછી, ગ્રાહક સંતુષ્ટ હોય અને કોઈ વિવાદ ન હોય ત્યારે પેમેન્ટ કરવામાં આવે છે.',
+  },
+  'agrSection.p4.title': { en: 'Strict action on adulteration', hi: 'मिलावट पर सख्त कार्रवाई', gu: 'ભેળસેળ પર કડક કાર્યવાહી' },
+  'agrSection.p4.desc': {
+    en: 'Adulterated or chemically treated products mean blacklisting and a minimum ₹1,00,000 penalty, plus legal action.',
+    hi: 'मिलावटी या रसायन-उपचारित उत्पाद पर ब्लैकलिस्ट, न्यूनतम ₹1,00,000 जुर्माना और कानूनी कार्रवाई।',
+    gu: 'ભેળસેળવાળા કે કેમિકલ-ટ્રીટેડ ઉત્પાદન પર બ્લેકલિસ્ટ, લઘુત્તમ ₹૧,૦૦,૦૦૦ દંડ અને કાયદેસર કાર્યવાહી.',
+  },
+  'agrSection.p5.title': { en: 'Returns & courier charges', hi: 'रिटर्न एवं कूरियर खर्च', gu: 'રિટર્ન અને કુરિયર ખર્ચ' },
+  'agrSection.p5.desc': {
+    en: 'For quality-related returns and RTO, return courier and logistics costs are borne by the seller.',
+    hi: 'गुणवत्ता से जुड़े रिटर्न और RTO पर रिटर्न कूरियर व लॉजिस्टिक्स खर्च विक्रेता वहन करता है।',
+    gu: 'ગુણવત્તા સંબંધિત રિટર્ન અને RTO પર રિટર્ન કુરિયર અને લોજિસ્ટિક્સ ખર્ચ વિક્રેતા ભોગવે છે.',
+  },
+  'agrSection.p6.title': { en: 'Vadodara jurisdiction', hi: 'वडोदरा क्षेत्राधिकार', gu: 'વડોદરા હકુમત' },
+  'agrSection.p6.desc': {
+    en: 'Disputes are governed by Indian law and the competent courts of Vadodara, Gujarat.',
+    hi: 'विवाद भारतीय कानून एवं वडोदरा, गुजरात के सक्षम न्यायालयों के अधीन होंगे।',
+    gu: 'વિવાદો ભારતીય કાયદા અને વડોદરા, ગુજરાતની સક્ષમ કોર્ટોને આધીન રહેશે.',
+  },
+
+  // Farmer agreement — full page
+  'agr.breadcrumbHome': { en: 'Home', hi: 'होम', gu: 'હોમ' },
+  'agr.breadcrumb': { en: 'Farmer Agreement', hi: 'किसान अनुबंध', gu: 'ખેડૂત કરાર' },
+  'agr.eyebrow': {
+    en: 'For Farmers & Sellers',
+    hi: 'किसानों एवं विक्रेताओं के लिए',
+    gu: 'ખેડૂતો અને વિક્રેતાઓ માટે',
+  },
+  'agr.langAll': { en: 'All languages', hi: 'सभी भाषाएँ', gu: 'બધી ભાષાઓ' },
+  'agr.downloadTitle': { en: 'Download the Agreement', hi: 'अनुबंध डाउनलोड करें', gu: 'કરાર ડાઉનલોડ કરો' },
+  'agr.downloadDesc': {
+    en: 'Get the complete tri-lingual agreement (English, Gujarati & Hindi) as a PDF for your records.',
+    hi: 'पूरा त्रिभाषी अनुबंध (अंग्रेज़ी, गुजराती एवं हिन्दी) अपने रिकॉर्ड के लिए PDF में प्राप्त करें।',
+    gu: 'સંપૂર્ણ ત્રિભાષી કરાર (અંગ્રેજી, ગુજરાતી અને હિન્દી) તમારા રેકોર્ડ માટે PDF માં મેળવો.',
+  },
+  'agr.downloadBtn': {
+    en: 'Download Agreement (PDF)',
+    hi: 'अनुबंध डाउनलोड करें (PDF)',
+    gu: 'કરાર ડાઉનલોડ કરો (PDF)',
+  },
+
   // Footer
+  'footer.farmerAgreement': { en: 'Farmer Agreement', hi: 'किसान अनुबंध', gu: 'ખેડૂત કરાર' },
   'footer.desc': {
     en: 'Every vendor and product listed on Bharosa Shop is thoroughly vetted. Only the best lab-certified organic products earn the signature Bharosa Verified Badge.',
     hi: 'भरोसा शॉप पर सूचीबद्ध हर विक्रेता एवं उत्पाद की पूरी तरह जांच की जाती है। केवल सर्वोत्तम लैब-प्रमाणित जैविक उत्पाद ही सिग्नेचर भरोसा सत्यापित बैज अर्जित करते हैं।',

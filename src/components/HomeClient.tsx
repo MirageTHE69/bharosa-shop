@@ -9,6 +9,7 @@ import { CategoryGridSection } from '@/components/CategoryGridSection';
 import { FeaturedVendorsSection } from '@/components/FeaturedVendorsSection';
 import { WhyBharosaSection } from '@/components/WhyBharosaSection';
 import { VendorCalloutSection } from '@/components/VendorCalloutSection';
+import { FarmerAgreementSection } from '@/components/FarmerAgreementSection';
 import { FAQSection } from '@/components/FAQSection';
 import { ProductCard } from '@/components/ProductCard';
 import { useAppShell } from '@/context/AppShellContext';
@@ -101,6 +102,9 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
 
       {/* 9. Become a Vendor Section */}
       <VendorCalloutSection />
+
+      {/* 9b. Farmer Agreement Summary */}
+      <FarmerAgreementSection />
 
       {/* 10. FAQ */}
       <FAQSection />
