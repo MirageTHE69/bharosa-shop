@@ -98,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>{t('nav.verifyBatch')}</span>
           </button>
 
-          {!user && (
+          {(!user || user.role === 'customer') && (
             <button
               onClick={onOpenSellerModal}
               className="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-white/35 text-white font-medium text-sm hover:bg-white/15 hover:border-white/60 transition-colors"
@@ -215,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </Link>
             )}
 
-            {!user && (
+            {(!user || user.role === 'customer') && (
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

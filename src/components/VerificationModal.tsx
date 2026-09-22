@@ -19,10 +19,13 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
   const [selectedBatchCode, setSelectedBatchCode] = useState(products[0]?.batch_code ?? '');
   const [customInputCode, setCustomInputCode] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
   if (!isOpen) return null;
 
-  const currentProduct = products.find((p) => p.batch_code === selectedBatchCode) ?? products[0];
+  const currentProduct = notFound
+    ? null
+    : products.find((p) => p.batch_code === selectedBatchCode) ?? products[0];
 
   const handleLookup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +37,12 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
       const match = products.find(
         (p) => p.batch_code?.toLowerCase() === customInputCode.trim().toLowerCase()
       );
-      if (match?.batch_code) setSelectedBatchCode(match.batch_code);
+      if (match?.batch_code) {
+        setSelectedBatchCode(match.batch_code);
+        setNotFound(false);
+      } else {
+        setNotFound(true);
+      }
     }, 400);
   };
 
@@ -81,7 +89,7 @@ export const VerificationModal: React.FC<VerificationModalProps> = ({
                 {products.map((prod) => (
                   <button
                     key={prod.id}
-                    onClick={() => setSelectedBatchCode(prod.batch_code ?? '')}
+                    onClick={() => { setSelectedBatchCode(prod.batch_code ?? ''); setNotFound(false); }}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                       selectedBatchCode === prod.batch_code
                         ? 'bg-[#24291F] text-white border-[#24291F]'
