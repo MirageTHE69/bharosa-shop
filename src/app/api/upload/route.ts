@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { imagekit } from '@/lib/imagekit';
+import { getImageKit } from '@/lib/imagekit';
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5MB
 const ALLOWED_FOLDERS = ['product-images', 'vendor-media', 'vendor-certifications'];
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
   const buffer = Buffer.from(arrayBuffer);
 
   try {
-    const result = await imagekit.upload({
+    const result = await getImageKit().upload({
       file: buffer,
       fileName: `${Date.now()}-${file.name}`,
       folder: `bharosashop/${folder}/${session.user.id}`,
