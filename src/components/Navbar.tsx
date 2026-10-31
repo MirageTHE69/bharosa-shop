@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Search, ShieldCheck, Menu, X, ChevronRight, Store, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { signOut } from '@/lib/actions/auth';
@@ -31,6 +31,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+
+  // Compact the header once the user scrolls past the top of the page.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const navLinks = [
     { label: t('nav.shop'), href: '/#categories' },
@@ -42,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const panelHref = user?.role === 'admin' ? '/admin/dashboard' : '/vendor/dashboard';
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#24291F] border-b border-black/30 shadow-sm">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-32 flex items-center justify-between gap-2 sm:gap-4">
+    <header className={`sticky top-0 z-40 w-full border-b border-black/30 transition-all duration-300 ${scrolled ? 'bg-[#24291F]/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-[#24291F] shadow-sm'}`}>
+      <div className={`max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 transition-all duration-300 ${scrolled ? 'h-16 sm:h-20' : 'h-20 sm:h-32'}`}>
 
         {/* Logo */}
         <Link
@@ -55,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <img
             src="/logo.png"
             alt="Bharosa Shop"
-            className="h-16 sm:h-28 w-auto object-contain shrink-0"
+            className={`w-auto object-contain shrink-0 transition-all duration-300 ${scrolled ? 'h-12 sm:h-16' : 'h-16 sm:h-28'}`}
           />
         </Link>
 
@@ -79,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-[#FFD08A] transition-colors"
+              className="relative py-1 hover:text-[#FFD08A] transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-[#F9BD5E] after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {link.label}
             </Link>
@@ -145,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute top-0.5 right-0.5 bg-[#C4611E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span key={cartCount} className="animate-pop absolute top-0.5 right-0.5 bg-[#C4611E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             )}

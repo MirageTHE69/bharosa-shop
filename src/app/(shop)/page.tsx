@@ -4,13 +4,13 @@ import { getVerifiedVendors } from '@/lib/data/vendors';
 import { getApprovedProducts } from '@/lib/data/products';
 
 export default async function Home() {
-  const [categories, vendors, featuredProducts] = await Promise.all([
+  const [categories, vendors, products] = await Promise.all([
     getAllCategories(),
     getVerifiedVendors(8),
-    getApprovedProducts({ limit: 8 }),
+    getApprovedProducts({ limit: 60 }),
   ]);
 
   return (
-    <HomeClient categories={categories} vendors={vendors} featuredProducts={featuredProducts} />
+    <HomeClient categories={categories} vendors={vendors} products={products} />
   );
 }

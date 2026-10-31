@@ -15,12 +15,12 @@ export const PromoBar: React.FC = () => {
   ];
 
   return (
-    <div className="w-full bg-[#1A1E15] text-white/85 text-xs overflow-hidden">
-      <div className="h-8 flex items-center">
+    <div className="w-full bg-[#2A5C31] text-white text-xs overflow-hidden">
+      <div className="h-9 flex items-center">
         <div className="flex items-center gap-10 pr-10 animate-marquee whitespace-nowrap">
           {[...items, ...items].map(({ icon: Icon, label }, i) => (
             <span key={i} className={`flex items-center space-x-1.5 ${fontClass}`}>
-              <Icon className="w-3.5 h-3.5 text-[#C79A3E] shrink-0" />
+              <Icon className="w-3.5 h-3.5 text-[#F9BD5E] shrink-0" />
               <span>{label}</span>
             </span>
           ))}

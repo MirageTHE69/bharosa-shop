@@ -74,7 +74,6 @@ export const translations: Dictionary = {
   },
   'hero.ctaShop': { en: 'Shop Verified Organic', hi: 'सत्यापित जैविक खरीदें', gu: 'ચકાસાયેલ ઓર્ગેનિક ખરીદો' },
   'hero.ctaVerify': { en: 'Verify Lab Report', hi: 'लैब रिपोर्ट सत्यापित करें', gu: 'લેબ રિપોર્ટ ચકાસો' },
-  'hero.trustZeroChemical': { en: '100% Zero Chemical', hi: '100% रसायन मुक्त', gu: '100% કેમિકલ મુક્ત' },
   'hero.trustFairPrice': { en: 'Fair Price to Farmers', hi: 'किसानों को उचित मूल्य', gu: 'ખેડૂતોને વાજબી ભાવ' },
   'hero.trustQrTrace': { en: 'QR Farm Traceability', hi: 'क्यूआर फार्म ट्रेसेबिलिटी', gu: 'ક્યુઆર ફાર્મ ટ્રેસેબિલિટી' },
   'hero.featuredBatch': { en: 'Featured Farm Batch', hi: 'विशेष फार्म बैच', gu: 'વિશેષ ફાર્મ બેચ' },
@@ -117,6 +116,30 @@ export const translations: Dictionary = {
     gu: 'દરેક કેટેગરી ભરોસા ચકાસાયેલ સીલ ધરાવે છે — દરેક બેચ પેકેજિંગ પહેલાં 230+ રાસાયણિક અવશેષો માટે પરીક્ષણ કરવામાં આવે છે.',
   },
   'categories.explore': { en: 'Explore', hi: 'देखें', gu: 'જુઓ' },
+  'categories.groupKitchen': { en: 'Kitchen Staples', hi: 'रसोई की ज़रूरतें', gu: 'રસોડાની જરૂરિયાતો' },
+  'categories.groupWellness': { en: 'Spices, Honey & Wellness', hi: 'मसाले, शहद एवं सेहत', gu: 'મસાલા, મધ અને આરોગ્ય' },
+  'categories.groupMore': { en: 'More to Explore', hi: 'और भी देखें', gu: 'વધુ જુઓ' },
+
+  // Trust strip under the hero
+  'strip.labTitle': { en: 'NABL Lab-Tested', hi: 'NABL लैब-परीक्षित', gu: 'NABL લેબ-ટેસ્ટેડ' },
+  'strip.labDesc': { en: 'Every batch screened', hi: 'हर बैच की जाँच', gu: 'દરેક બેચની તપાસ' },
+  'strip.farmTitle': { en: 'Direct From Farmers', hi: 'सीधे किसानों से', gu: 'સીધા ખેડૂતો પાસેથી' },
+  'strip.farmDesc': { en: 'Fair price, no middlemen', hi: 'उचित दाम, कोई बिचौलिया नहीं', gu: 'યોગ્ય ભાવ, કોઈ વચેટિયા નહીં' },
+  'strip.deliveryTitle': { en: 'Free Delivery', hi: 'मुफ्त डिलीवरी', gu: 'મફત ડિલિવરી' },
+  'strip.deliveryDesc': { en: 'Across India', hi: 'पूरे भारत में', gu: 'સમગ્ર ભારતમાં' },
+  'strip.codTitle': { en: 'Cash on Delivery', hi: 'कैश ऑन डिलीवरी', gu: 'કેશ ઓન ડિલિવરી' },
+  'strip.codDesc': { en: 'Pay when it arrives', hi: 'मिलने पर भुगतान करें', gu: 'મળે ત્યારે ચૂકવો' },
+
+  // Category-wise product tabs (homepage)
+  'showcase.eyebrow': { en: 'Farm Fresh Picks', hi: 'खेत से ताज़ा', gu: 'ખેતરમાંથી તાજું' },
+  'showcase.title': { en: 'Shop Products by Category', hi: 'श्रेणी अनुसार उत्पाद', gu: 'કેટેગરી પ્રમાણે ઉત્પાદનો' },
+  'showcase.all': { en: 'Bestsellers', hi: 'बेस्टसेलर', gu: 'બેસ્ટસેલર' },
+  'showcase.viewAll': { en: 'View all', hi: 'सभी देखें', gu: 'બધું જુઓ' },
+  'showcase.empty': {
+    en: 'New batches for this category are being lab-tested — check back soon.',
+    hi: 'इस श्रेणी के नए बैच की जाँच चल रही है — जल्द वापस देखें।',
+    gu: 'આ કેટેગરીના નવા બેચનું પરીક્ષણ ચાલુ છે — ટૂંક સમયમાં ફરી જુઓ.',
+  },
 
   // Vendors section
   'vendors.eyebrow': { en: 'Direct Producer Marketplace', hi: 'प्रत्यक्ष उत्पादक बाज़ार', gu: 'સીધું ઉત્પાદક બજાર' },

@@ -107,7 +107,7 @@ export default async function FarmerPage({ params }: FarmerPageProps) {
                 No live products yet from this farmer.
               </p>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-2 gap-3 sm:gap-5">
                 {products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, Tiro_Devanagari_Hindi, Noto_Sans_Gujarati, Inter } from "next/font/google";
+import { Montserrat, Tiro_Devanagari_Hindi, Noto_Sans_Gujarati, Inter } from "next/font/google";
 import "./globals.css";
 import { AppShellProvider } from "@/context/AppShellContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
-const fraunces = Fraunces({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-heading",
   display: "swap",
 });
 
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="hi"
-      className={`${fraunces.variable} ${tiroDevanagari.variable} ${notoGujarati.variable} ${inter.variable} h-full antialiased scroll-smooth`}
+      className={`${montserrat.variable} ${tiroDevanagari.variable} ${notoGujarati.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#FBF9F4] text-[#24291F] selection:bg-[#C4611E] selection:text-white">
         <LanguageProvider>

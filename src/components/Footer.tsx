@@ -88,11 +88,11 @@ export const Footer: React.FC<FooterProps> = ({
             <ul className="space-y-2 text-xs text-white/60">
               <li className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 shrink-0" />
-                <span>+91 1800-BHAROSA (Toll Free)</span>
+                <a href="tel:+917859991573" className="hover:text-white transition-colors">+91 78599 91573</a>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="w-3.5 h-3.5 shrink-0" />
-                <span>trust@bharosashop.in</span>
+                <a href="mailto:info@bharosa.shop" className="hover:text-white transition-colors">info@bharosa.shop</a>
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" />

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag, CheckCircle2, Star, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, Star, ShieldCheck } from 'lucide-react';
 import { useAppShell } from '@/context/AppShellContext';
 import type { ProductWithVendor } from '@/types/database';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
@@ -17,84 +17,70 @@ export function ProductCard({ product }: { product: ProductWithVendor }) {
   return (
     <Link
       href={`/product/${product.slug}`}
-      className="bg-white rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
+      className="w-full bg-white rounded-2xl border border-[#E7E0CE] hover:border-[#3F7D46]/40 hover:shadow-xl hover:shadow-[#2A5C31]/10 hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col group"
     >
-      <div>
-        <div className="relative h-44 bg-[#F4EEE1] overflow-hidden">
-          <img
-            src={product.image_url ?? DEFAULT_PRODUCT_IMAGE}
-            alt={product.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+      <div className="relative aspect-square bg-[#F4EEE1] overflow-hidden">
+        <img
+          src={product.image_url ?? DEFAULT_PRODUCT_IMAGE}
+          alt={product.title}
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
 
-          {discountPct && (
-            <div className="absolute top-2 left-2 bg-[#C4611E] text-white text-[11px] font-bold px-2 py-1 rounded-lg shadow-sm">
-              {discountPct}% OFF
-            </div>
-          )}
-
-          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/95 text-[#3F7D46] flex items-center justify-center shadow-sm" title="Bharosa Verified">
-            <ShieldCheck className="w-4 h-4" strokeWidth={2.5} />
+        {discountPct && (
+          <div className="absolute top-2 left-2 bg-[#F9BD5E] text-[#24291F] text-[11px] font-bold px-2 py-1 rounded-md">
+            Save {discountPct}%
           </div>
+        )}
 
-          {product.batch_code && (
-            <div className="absolute bottom-2 right-2 bg-[#24291F]/70 text-white text-[10px] font-mono px-2 py-0.5 rounded-full">
-              {product.batch_code}
-            </div>
-          )}
+        <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/95 text-[#3F7D46] flex items-center justify-center shadow-sm" title="Bharosa Verified">
+          <ShieldCheck className="w-4 h-4" strokeWidth={2.5} />
         </div>
 
-        <div className="p-4 space-y-1.5">
-          <div className="flex items-center justify-between text-xs text-[#6B7263]">
-            <span>{product.weight}</span>
-            <span className="font-medium text-[#3F7D46]">{product.vendor.name}</span>
+        {product.badge && (
+          <div className="absolute bottom-2 left-2 bg-[#2A5C31] text-white text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded">
+            {product.badge}
           </div>
-
-          <h3 className="font-serif-display text-base font-bold text-[#24291F] line-clamp-1">
-            {product.title}
-          </h3>
-
-          {product.hindi_title && (
-            <div className="font-devanagari text-xs text-[#6B7263]">{product.hindi_title}</div>
-          )}
-
-          {product.rating > 0 && (
-            <div className="flex items-center space-x-1 text-xs pt-0.5">
-              <Star className="w-3.5 h-3.5 text-[#C4611E] fill-current" />
-              <span className="font-semibold text-[#24291F]">{product.rating.toFixed(1)}</span>
-              {product.reviews > 0 && (
-                <span className="text-[#6B7263]">({product.reviews})</span>
-              )}
-            </div>
-          )}
-
-          {product.lab_pesticide_ppm && (
-            <div className="flex items-center space-x-1 text-[#3F7D46] text-[11px] font-medium pt-1">
-              <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-              <span>Pesticide Score: {product.lab_pesticide_ppm.split(' ')[0]}</span>
-            </div>
-          )}
-        </div>
+        )}
       </div>
 
-      <div className="p-4 pt-1 flex items-center justify-between">
-        <div>
-          <span className="text-base font-bold text-[#24291F]">₹{product.price}</span>
-          {product.original_price && (
-            <span className="text-xs text-[#6B7263] line-through ml-1.5">₹{product.original_price}</span>
+      <div className="p-3 sm:p-4 flex flex-col flex-1">
+        <h3 className="font-serif-display text-sm sm:text-base font-bold text-[#24291F] leading-snug line-clamp-2 min-h-[2.5em]">
+          {product.title}
+        </h3>
+
+        <p className="mt-1 text-[11px] sm:text-xs text-[#6B7263] line-clamp-1">
+          {[product.weight, product.vendor.name].filter(Boolean).join(' · ')}
+        </p>
+
+        {product.rating > 0 && (
+          <div className="mt-1.5 flex items-center gap-1 text-xs">
+            <Star className="w-3.5 h-3.5 text-[#F2A93B] fill-current" />
+            <span className="font-semibold text-[#24291F]">{product.rating.toFixed(1)}</span>
+            {product.reviews > 0 && (
+              <span className="text-[#6B7263]">| {product.reviews} Reviews</span>
+            )}
+          </div>
+        )}
+
+        <div className="mt-2 flex items-baseline gap-1.5 flex-wrap">
+          <span className="text-base sm:text-lg font-bold text-[#24291F]">₹{product.price}</span>
+          {discountPct && (
+            <span className="text-xs text-[#6B7263] line-through">₹{product.original_price}</span>
           )}
         </div>
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            addToCart(product);
-          }}
-          className="px-3.5 py-1.5 bg-[#F4EEE1] hover:bg-[#C4611E] text-[#24291F] hover:text-white font-medium text-xs rounded-full transition-colors flex items-center space-x-1.5"
-        >
-          <ShoppingBag className="w-3.5 h-3.5" />
-          <span>Add</span>
-        </button>
+        <div className="mt-auto pt-3">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}
+            className="w-full py-2 sm:py-2.5 bg-[#2A5C31] hover:bg-[#1F4725] text-white font-semibold text-xs sm:text-sm rounded-lg transition-all active:scale-95 hover:shadow-md flex items-center justify-center gap-1.5"
+          >
+            <ShoppingBag className="w-4 h-4 transition-transform group-hover:-rotate-12" />
+            Add To Cart
+          </button>
+        </div>
       </div>
     </Link>
   );

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { HeroSection } from '@/components/HeroSection';
-import { CategoryPillNav } from '@/components/CategoryPillNav';
 import { HindiDivider } from '@/components/HindiDivider';
 import { TrustProcessSection } from '@/components/TrustProcessSection';
 import { CategoryGridSection } from '@/components/CategoryGridSection';
@@ -11,19 +10,21 @@ import { WhyBharosaSection } from '@/components/WhyBharosaSection';
 import { VendorCalloutSection } from '@/components/VendorCalloutSection';
 import { FarmerAgreementSection } from '@/components/FarmerAgreementSection';
 import { FAQSection } from '@/components/FAQSection';
-import { ProductCard } from '@/components/ProductCard';
+import { CategoryProductTabs } from '@/components/CategoryProductTabs';
+import { TrustStrip } from '@/components/TrustStrip';
+import { Reveal } from '@/components/Reveal';
 import { useAppShell } from '@/context/AppShellContext';
 import { useLanguage } from '@/context/LanguageContext';
 import type { Category, Vendor, ProductWithVendor } from '@/types/database';
-import { Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 
 interface HomeClientProps {
   categories: Category[];
   vendors: Vendor[];
-  featuredProducts: ProductWithVendor[];
+  products: ProductWithVendor[];
 }
 
-export function HomeClient({ categories, vendors, featuredProducts }: HomeClientProps) {
+export function HomeClient({ categories, vendors, products }: HomeClientProps) {
   const { openVerifyModal } = useAppShell();
   const { t, fontClass } = useLanguage();
 
@@ -37,56 +38,25 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
       {/* 1. Hero Section */}
       <HeroSection onShopClick={scrollToCategories} onVerifyClick={openVerifyModal} />
 
-      {/* 1b. Quick Category Filter Pills */}
-      <CategoryPillNav categories={categories} />
+      {/* 1b. Trust strip overlapping the hero */}
+      <TrustStrip />
 
-      {/* 2. Hindi Slogan Divider */}
+      {/* 2. Shop by Category — grouped tiles */}
+      <CategoryGridSection categories={categories} />
+
+      {/* 3. Category-wise product showcase (tabbed) */}
+      <CategoryProductTabs categories={categories} products={products} />
+
+      {/* 4. Hindi Slogan Divider */}
       <HindiDivider
         phraseHi="मिट्टी से मेज़ तक"
         translationEn="From Soil to Table • Farm Traceability"
       />
 
-      {/* 3. Trust & Verification Process */}
-      <TrustProcessSection onOpenVerifyModal={openVerifyModal} />
-
-      {/* 4. Featured Verified Products Spotlight */}
-      <section className="py-16 bg-[#FBF9F4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-            <div className="space-y-2">
-              <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
-                {t('home.specialsEyebrow')}
-              </span>
-              <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
-                {t('home.specialsTitle')}
-              </h2>
-            </div>
-
-            <button
-              onClick={scrollToCategories}
-              className="text-sm font-semibold text-[#3F7D46] hover:underline flex items-center space-x-1"
-            >
-              <span className={fontClass}>{t('home.viewAllCategories')}</span>
-              <span>→</span>
-            </button>
-          </div>
-
-          {featuredProducts.length === 0 ? (
-            <p className={`text-sm text-[#6B7263] bg-[#F4EEE1] rounded-2xl p-8 text-center ${fontClass}`}>
-              {t('home.noProducts')}
-            </p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {featuredProducts.map((prod) => (
-                <ProductCard key={prod.id} product={prod} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* 5. Shop by Category Grid */}
-      <CategoryGridSection categories={categories} />
+      {/* 5. Trust & Verification Process */}
+      <Reveal>
+        <TrustProcessSection onOpenVerifyModal={openVerifyModal} />
+      </Reveal>
 
       {/* 6. Hindi Slogan Divider */}
       <HindiDivider
@@ -95,31 +65,42 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
       />
 
       {/* 7. Featured Farmers & Artisans */}
-      <FeaturedVendorsSection vendors={vendors} />
+      <Reveal>
+        <FeaturedVendorsSection vendors={vendors} />
+      </Reveal>
 
       {/* 8. Why Bharosa (Value Propositions) */}
-      <WhyBharosaSection />
+      <Reveal>
+        <WhyBharosaSection />
+      </Reveal>
 
       {/* 9. Become a Vendor Section */}
-      <VendorCalloutSection />
+      <Reveal>
+        <VendorCalloutSection />
+      </Reveal>
 
       {/* 9b. Farmer Agreement Summary */}
-      <FarmerAgreementSection />
+      <Reveal>
+        <FarmerAgreementSection />
+      </Reveal>
 
       {/* 10. FAQ */}
-      <FAQSection />
+      <Reveal>
+        <FAQSection />
+      </Reveal>
 
       {/* 11. Verified Customer Testimonials */}
       <section className="py-16 sm:py-24 bg-[#F4EEE1]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
+          <Reveal className="text-center max-w-2xl mx-auto space-y-2 mb-12">
             <span className={`text-xs font-bold uppercase tracking-widest text-[#3F7D46] ${fontClass}`}>
               {t('home.storiesEyebrow')}
             </span>
             <h2 className={`font-serif-display text-3xl sm:text-4xl font-bold text-[#24291F] ${fontClass}`}>
               {t('home.storiesTitle')}
             </h2>
-          </div>
+            <div className="mx-auto w-12 h-1 rounded-full bg-[#F9BD5E]" />
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
@@ -142,23 +123,26 @@ export function HomeClient({ categories, vendors, featuredProducts }: HomeClient
                 product: 'Wild Forest Raw Honey',
               },
             ].map((rev, i) => (
-              <div key={i} className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 space-y-3">
-                <div className="flex text-[#C4611E]">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-sm text-[#24291F] leading-relaxed">
-                  &quot;{rev.quote}&quot;
-                </p>
-                <div className="pt-3 border-t border-[#E7E0CE] flex items-center justify-between text-xs">
-                  <div>
-                    <span className="font-semibold text-[#24291F]">{rev.name}</span>
-                    <span className="text-[#6B7263]"> ({rev.city})</span>
+              <Reveal key={i} delay={i * 100} className="flex">
+                <div className="relative w-full bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-3">
+                  <Quote className="absolute top-5 right-5 w-8 h-8 text-[#F9BD5E]/40" />
+                  <div className="flex text-[#F2A93B]">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} className="w-3.5 h-3.5 fill-current" />
+                    ))}
                   </div>
-                  <span className="font-medium text-[#3F7D46]">{rev.product}</span>
+                  <p className="text-sm text-[#24291F] leading-relaxed">
+                    &quot;{rev.quote}&quot;
+                  </p>
+                  <div className="pt-3 border-t border-[#E7E0CE] flex items-center justify-between text-xs">
+                    <div>
+                      <span className="font-semibold text-[#24291F]">{rev.name}</span>
+                      <span className="text-[#6B7263]"> ({rev.city})</span>
+                    </div>
+                    <span className="font-medium text-[#3F7D46]">{rev.product}</span>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
