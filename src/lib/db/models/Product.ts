@@ -40,7 +40,7 @@ const productSchema = new Schema<ProductDoc>(
     weight: { type: String, default: null },
     image_url: { type: String, default: null },
     badge: { type: String, default: 'Bharosa Verified' },
-    batch_code: { type: String, default: null, unique: true, sparse: true },
+    batch_code: { type: String, unique: true, sparse: true },
     lab_pesticide_ppm: { type: String, default: null },
     lab_purity_score: { type: String, default: null },
     harvest_date: { type: String, default: null },

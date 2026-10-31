@@ -53,6 +53,7 @@ export async function createProduct(_prevState: ActionResult, formData: FormData
         slug = `${slugify(fields.title)}-${Math.random().toString(36).slice(2, 6)}`;
         continue;
       }
+      console.error('createProduct failed:', err);
       return { error: 'Could not save product. Please try again.' };
     }
   }

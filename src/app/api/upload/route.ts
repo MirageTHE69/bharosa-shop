@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { cloudinary } from '@/lib/cloudinary';
+import { imagekit } from '@/lib/imagekit';
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5MB
 const ALLOWED_FOLDERS = ['product-images', 'vendor-media', 'vendor-certifications'];
@@ -29,23 +29,16 @@ export async function POST(request: Request) {
   const buffer = Buffer.from(arrayBuffer);
 
   try {
-    const result = await new Promise<{ secure_url: string }>((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        {
-          folder: `bharosa-shop/${folder}/${session.user.id}`,
-          resource_type: 'auto',
-        },
-        (error, uploadResult) => {
-          if (error || !uploadResult) reject(error ?? new Error('Upload failed'));
-          else resolve(uploadResult as { secure_url: string });
-        }
-      );
-      uploadStream.end(buffer);
+    const result = await imagekit.upload({
+      file: buffer,
+      fileName: `${Date.now()}-${file.name}`,
+      folder: `bharosashop/${folder}/${session.user.id}`,
+      useUniqueFileName: false,
     });
 
-    return NextResponse.json({ url: result.secure_url });
+    return NextResponse.json({ url: result.url });
   } catch (err) {
-    console.error('Cloudinary upload failed:', err);
+    console.error('ImageKit upload failed:', err);
     return NextResponse.json({ error: 'Upload failed. Please try again.' }, { status: 500 });
   }
 }
