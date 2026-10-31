@@ -15,8 +15,6 @@ import { Product } from '../src/lib/db/models/Product';
 import { Category } from '../src/lib/db/models/Category';
 import { slugify } from '../src/lib/slugify';
 
-const DEMO_PASSWORD = 'BharosaDemo123!';
-
 const VENDORS = [
   {
     email: 'haris.apiary@bharosa.seed',
@@ -164,6 +162,12 @@ const PRODUCTS = [
 ];
 
 async function main() {
+  const DEMO_PASSWORD = process.env.DEMO_PASSWORD;
+  if (!DEMO_PASSWORD) {
+    console.error('Set DEMO_PASSWORD in .env.local before running this script.');
+    process.exit(1);
+  }
+
   await connectDB();
 
   const vendorIdByEmail: Record<string, string> = {};
@@ -247,7 +251,7 @@ async function main() {
     console.log(`✔ product: ${p.title}`);
   }
 
-  console.log(`\nDone. Demo vendor logins use password: ${DEMO_PASSWORD}`);
+  console.log('\nDone. Demo vendor logins use DEMO_PASSWORD from .env.local.');
   process.exit(0);
 }
 
