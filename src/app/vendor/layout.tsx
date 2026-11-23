@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutDashboard, Package, PlusCircle, UserCircle, Home } from 'lucide-react';
@@ -10,6 +11,11 @@ const navItems = [
   { href: '/vendor/products/new', label: 'Add Product', icon: PlusCircle },
   { href: '/vendor/profile', label: 'Profile', icon: UserCircle },
 ];
+
+// Private pages: keep them out of search results.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function VendorLayout({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUser();

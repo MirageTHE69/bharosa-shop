@@ -1,4 +1,4 @@
-import { connectDB } from '@/lib/db/connect';
+import { connectDB, rethrowIfDatabaseDown } from '@/lib/db/connect';
 import { Vendor as VendorModel } from '@/lib/db/models/Vendor';
 import { serializeVendor } from '@/lib/db/serialize';
 import type { Vendor, VendorStatus } from '@/types/database';
@@ -12,6 +12,7 @@ export async function getVerifiedVendors(limit?: number): Promise<Vendor[]> {
     const docs = await query.lean();
     return docs.map(serializeVendor);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error('Error fetching verified vendors:', err);
     return [];
   }
@@ -24,6 +25,7 @@ export async function getVendorBySlug(slug: string): Promise<Vendor | null> {
     const doc = await VendorModel.findOne({ slug, status: 'verified' }).lean();
     return doc ? serializeVendor(doc) : null;
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching vendor by slug "${slug}":`, err);
     return null;
   }
@@ -36,6 +38,7 @@ export async function getOwnVendor(userId: string): Promise<Vendor | null> {
     const doc = await VendorModel.findOne({ user_id: userId }).lean();
     return doc ? serializeVendor(doc) : null;
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching own vendor for user "${userId}":`, err);
     return null;
   }
@@ -50,6 +53,7 @@ export async function getAllVendors(status?: VendorStatus): Promise<Vendor[]> {
     const docs = await VendorModel.find(filter).sort({ createdAt: -1 }).lean();
     return docs.map(serializeVendor);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error('Error fetching all vendors:', err);
     return [];
   }
@@ -62,6 +66,7 @@ export async function getVendorById(id: string): Promise<Vendor | null> {
     const doc = await VendorModel.findById(id).lean().catch(() => null);
     return doc ? serializeVendor(doc) : null;
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching vendor by ID "${id}":`, err);
     return null;
   }

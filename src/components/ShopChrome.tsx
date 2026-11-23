@@ -12,7 +12,7 @@ import type { ProfileRole, ProductWithVendor } from '@/types/database';
 
 interface ShopChromeProps {
   children: React.ReactNode;
-  user: { fullName: string | null; role: ProfileRole } | null;
+  user: { fullName: string | null; email: string | null; role: ProfileRole } | null;
   verifyProducts: ProductWithVendor[];
 }
 

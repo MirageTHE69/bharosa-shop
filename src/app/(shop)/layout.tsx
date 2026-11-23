@@ -8,7 +8,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
 
   return (
     <ShopChrome
-      user={currentUser ? { fullName: currentUser.profile.full_name, role: currentUser.profile.role } : null}
+      user={currentUser ? { fullName: currentUser.profile.full_name, email: currentUser.email, role: currentUser.profile.role } : null}
       verifyProducts={verifyProducts}
     >
       {children}

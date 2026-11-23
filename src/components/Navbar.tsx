@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Search, ShieldCheck, Menu, X, ChevronRight, Store, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { signOut } from '@/lib/actions/auth';
 import { useLanguage } from '@/context/LanguageContext';
 import { LanguageToggle } from '@/components/LanguageToggle';
+import { SearchBox } from '@/components/SearchBox';
 import type { ProfileRole } from '@/types/database';
 
 interface NavbarUser {
   fullName: string | null;
+  email: string | null;
   role: ProfileRole;
 }
 
@@ -30,7 +32,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const [scrolled, setScrolled] = useState(false);
 
   // Compact the header once the user scrolls past the top of the page.
@@ -49,6 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   const panelHref = user?.role === 'admin' ? '/admin/dashboard' : '/vendor/dashboard';
+
+  // Shown in the header so a signed-in visitor can see they're logged in.
+  const displayName =
+    user?.fullName?.trim().split(/\s+/)[0] || user?.email?.split('@')[0] || t('nav.myAccount');
 
   return (
     <header className={`sticky top-0 z-40 w-full border-b border-black/30 transition-all duration-300 ${scrolled ? 'bg-[#24291F]/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-[#24291F] shadow-sm'}`}>
@@ -69,17 +74,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </Link>
 
         {/* Desktop Search Bar */}
-        <div className="hidden xl:flex flex-1 max-w-md mx-4">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7263]" />
-            <input
-              type="text"
-              placeholder={t('nav.searchPlaceholder')}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 rounded-lg bg-white border border-transparent text-[#24291F] placeholder-[#6B7263] text-sm focus:outline-none focus:border-[#C4611E] transition-colors"
-            />
-          </div>
+        <div className="hidden xl:block flex-1 max-w-md mx-4">
+          <Suspense fallback={<SearchBoxFallback placeholder={t('nav.searchPlaceholder')} />}>
+            <SearchBox placeholder={t('nav.searchPlaceholder')} />
+          </Suspense>
         </div>
 
         {/* Desktop Nav Links */}
@@ -128,15 +126,26 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
 
           {user ? (
-            <form action={signOut} className="hidden lg:block">
-              <button
-                type="submit"
-                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white font-medium text-sm hover:bg-white/15 transition-colors"
-                aria-label={t('nav.signOut')}
+            <div className="hidden lg:flex items-center gap-1">
+              <span
+                className="inline-flex items-center gap-1.5 pl-1 pr-3 py-1 rounded-full bg-white/10 text-white text-sm font-medium max-w-[11rem]"
+                title={user.email ?? undefined}
               >
-                <LogOut className="w-3.5 h-3.5" />
-              </button>
-            </form>
+                <span className="w-6 h-6 rounded-full bg-[#F9BD5E] text-[#24291F] text-xs font-bold flex items-center justify-center shrink-0 uppercase">
+                  {displayName.charAt(0)}
+                </span>
+                <span className="truncate">{displayName}</span>
+              </span>
+              <form action={signOut}>
+                <button
+                  type="submit"
+                  className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-white/90 font-medium text-sm hover:bg-white/15 transition-colors"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>{t('nav.signOut')}</span>
+                </button>
+              </form>
+            </div>
           ) : (
             <Link
               href="/auth/sign-in"
@@ -145,6 +154,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <User className="w-3.5 h-3.5" />
               <span>{t('nav.signIn')}</span>
             </Link>
+          )}
+
+          {user && (
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden w-8 h-8 rounded-full bg-[#F9BD5E] text-[#24291F] text-sm font-bold flex items-center justify-center uppercase"
+              aria-label={`${t('nav.signedInAs')} ${displayName}`}
+            >
+              {displayName.charAt(0)}
+            </button>
           )}
 
           <button
@@ -172,21 +191,25 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile/Tablet Search Bar (shown until the desktop search bar takes over at xl:) */}
       <div className="xl:hidden px-4 pb-3">
-        <div className="relative w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7263]" />
-          <input
-            type="text"
-            placeholder={t('nav.searchPlaceholderMobile')}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 rounded-lg bg-white border border-transparent text-sm text-[#24291F] focus:outline-none focus:border-[#C4611E]"
-          />
-        </div>
+        <Suspense fallback={<SearchBoxFallback placeholder={t('nav.searchPlaceholderMobile')} />}>
+          <SearchBox placeholder={t('nav.searchPlaceholderMobile')} onNavigate={() => setMobileMenuOpen(false)} />
+        </Suspense>
       </div>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#FBF9F4] border-t border-[#E7E0CE] px-4 py-5">
+          {user && (
+            <div className="mb-3 flex items-center gap-3 rounded-xl bg-white border border-[#E7E0CE] px-3 py-2.5">
+              <span className="w-9 h-9 rounded-full bg-[#F9BD5E] text-[#24291F] font-bold flex items-center justify-center uppercase shrink-0">
+                {displayName.charAt(0)}
+              </span>
+              <div className="min-w-0">
+                <div className="text-xs text-[#6B7263]">{t('nav.signedInAs')}</div>
+                <div className="text-sm font-semibold text-[#24291F] truncate">{user.fullName || user.email}</div>
+              </div>
+            </div>
+          )}
           <nav className="flex flex-col">
             {navLinks.map((link) => (
               <Link
@@ -263,3 +286,19 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+
+// Static stand-in shown while the search box hydrates (it reads the URL).
+function SearchBoxFallback({ placeholder }: { placeholder: string }) {
+  return (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7263]" />
+      <input
+        type="search"
+        disabled
+        placeholder={placeholder}
+        aria-label={placeholder}
+        className="w-full pl-9 pr-20 py-2 rounded-lg bg-white border border-transparent text-sm"
+      />
+    </div>
+  );
+}

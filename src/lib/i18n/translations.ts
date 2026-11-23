@@ -57,6 +57,15 @@ export const translations: Dictionary = {
   'nav.myVendorPanel': { en: 'My Vendor Panel', hi: 'मेरा विक्रेता पैनल', gu: 'મારી વિક્રેતા પેનલ' },
   'nav.signIn': { en: 'Sign In', hi: 'साइन इन करें', gu: 'સાઇન ઇન કરો' },
   'nav.signOut': { en: 'Sign Out', hi: 'साइन आउट करें', gu: 'સાઇન આઉટ કરો' },
+  'search.submit': { en: 'Search', hi: 'खोजें', gu: 'શોધો' },
+  'search.clear': { en: 'Clear search', hi: 'खोज साफ़ करें', gu: 'શોધ સાફ કરો' },
+  'search.searching': { en: 'Searching…', hi: 'खोज रहे हैं…', gu: 'શોધી રહ્યા છીએ…' },
+  'search.noMatches': { en: 'No products match', hi: 'कोई उत्पाद नहीं मिला', gu: 'કોઈ ઉત્પાદન મળ્યું નથી' },
+  'search.products': { en: 'Products', hi: 'उत्पाद', gu: 'ઉત્પાદનો' },
+  'search.categories': { en: 'Categories', hi: 'श्रेणियाँ', gu: 'કેટેગરી' },
+  'search.seeAll': { en: 'See all results for', hi: 'सभी परिणाम देखें:', gu: 'બધા પરિણામો જુઓ:' },
+  'nav.myAccount': { en: 'My Account', hi: 'मेरा खाता', gu: 'મારું ખાતું' },
+  'nav.signedInAs': { en: 'Signed in as', hi: 'साइन इन है', gu: 'સાઇન ઇન છે' },
   'nav.language': { en: 'Language', hi: 'भाषा', gu: 'ભાષા' },
 
   // Hero
@@ -193,9 +202,9 @@ export const translations: Dictionary = {
     gu: 'મફત NABL લેબ ટેસ્ટિંગ સહાય',
   },
   'vendorCallout.benefit3': {
-    en: 'Direct Bi-weekly Bank Payouts',
-    hi: 'प्रत्यक्ष पाक्षिक बैंक भुगतान',
-    gu: 'સીધી પખવાડિક બેંક ચુકવણી',
+    en: 'Bank Payouts Within 7 Days of Delivery',
+    hi: 'डिलीवरी के 7 दिनों में सीधा बैंक भुगतान',
+    gu: 'ડિલિવરીના 7 દિવસમાં સીધી બેંક ચુકવણી',
   },
   'vendorCallout.benefit4': {
     en: 'Bharosa Organic Verified Stamp',
@@ -228,9 +237,9 @@ export const translations: Dictionary = {
     gu: 'હું ભરોસા શોપ પર મારા ઓર્ગેનિક ઉત્પાદનો કેવી રીતે વેચી શકું?',
   },
   'faq.a2': {
-    en: 'Apply for Verified Seller status from the homepage or footer. Our team assists with NABL lab testing, and once approved you get zero listing commission for your first 90 days plus direct bi-weekly payouts.',
-    hi: 'होमपेज या फुटर से सत्यापित विक्रेता स्थिति के लिए आवेदन करें। हमारी टीम NABL लैब परीक्षण में सहायता करती है, एवं स्वीकृति के बाद आपको पहले 90 दिनों के लिए शून्य लिस्टिंग कमीशन के साथ प्रत्यक्ष पाक्षिक भुगतान मिलता है।',
-    gu: 'હોમપેજ અથવા ફૂટરમાંથી ચકાસાયેલ વિક્રેતા સ્ટેટસ માટે અરજી કરો. અમારી ટીમ NABL લેબ ટેસ્ટિંગમાં મદદ કરે છે, અને મંજૂરી પછી તમને પ્રથમ 90 દિવસ માટે શૂન્ય લિસ્ટિંગ કમિશન સાથે સીધી પખવાડિક ચુકવણી મળે છે.',
+    en: 'Apply for Verified Seller status from the homepage or footer. Our team assists with NABL lab testing, and once approved you get zero listing commission for your first 90 days plus direct bank payouts within 7 business days of each successful delivery.',
+    hi: 'होमपेज या फुटर से सत्यापित विक्रेता स्थिति के लिए आवेदन करें। हमारी टीम NABL लैब परीक्षण में सहायता करती है, एवं स्वीकृति के बाद आपको पहले 90 दिनों के लिए शून्य लिस्टिंग कमीशन के साथ हर सफल डिलीवरी के 7 कार्य दिवसों के भीतर प्रत्यक्ष बैंक भुगतान मिलता है।',
+    gu: 'હોમપેજ અથવા ફૂટરમાંથી ચકાસાયેલ વિક્રેતા સ્ટેટસ માટે અરજી કરો. અમારી ટીમ NABL લેબ ટેસ્ટિંગમાં મદદ કરે છે, અને મંજૂરી પછી તમને પ્રથમ 90 દિવસ માટે શૂન્ય લિસ્ટિંગ કમિશન સાથે દરેક સફળ ડિલિવરીના 7 કાર્યકારી દિવસમાં સીધી બેંક ચુકવણી મળે છે.',
   },
   'faq.q3': {
     en: 'What does the Bharosa Verified Seal mean?',

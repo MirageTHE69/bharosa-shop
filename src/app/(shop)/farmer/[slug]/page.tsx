@@ -1,3 +1,5 @@
+import { cache } from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MapPin, Star } from 'lucide-react';
 import { getVendorBySlug } from '@/lib/data/vendors';
@@ -5,15 +7,43 @@ import { getApprovedProducts } from '@/lib/data/products';
 import { TrustSealBadge } from '@/components/TrustSealBadge';
 import { ProductCard } from '@/components/ProductCard';
 import { DEFAULT_FARM_IMAGE, DEFAULT_VENDOR_AVATAR } from '@/lib/constants';
+import { toMetaDescription } from '@/lib/site';
 
 interface FarmerPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Deduplicates the lookup shared by generateMetadata and the page render.
+const getVendor = cache(getVendorBySlug);
+
+export async function generateMetadata({ params }: FarmerPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const vendor = await getVendor(slug);
+  if (!vendor) return { title: 'Farmer not found' };
+
+  const place = [vendor.location, vendor.state].filter(Boolean).join(', ');
+  const title = place ? `${vendor.name}, ${place}` : vendor.name;
+  const description = toMetaDescription(
+    vendor.story,
+    `Meet ${vendor.name}, a Bharosa-verified organic producer${vendor.specialty ? ` of ${vendor.specialty}` : ''}.`
+  );
+  return {
+    title,
+    description,
+    alternates: { canonical: `/farmer/${vendor.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `/farmer/${vendor.slug}`,
+      images: vendor.farm_image_url ? [{ url: vendor.farm_image_url, alt: `${vendor.name} farm` }] : undefined,
+    },
+  };
+}
+
 export default async function FarmerPage({ params }: FarmerPageProps) {
   const { slug } = await params;
 
-  const vendor = await getVendorBySlug(slug);
+  const vendor = await getVendor(slug);
   if (!vendor) notFound();
 
   const products = await getApprovedProducts({ vendorSlug: slug });

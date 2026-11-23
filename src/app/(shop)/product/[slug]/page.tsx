@@ -1,3 +1,5 @@
+import { cache } from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle2, MapPin, Calendar, Award } from 'lucide-react';
@@ -5,15 +7,42 @@ import { getProductBySlug } from '@/lib/data/products';
 import { TrustSealBadge } from '@/components/TrustSealBadge';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
+import { toMetaDescription } from '@/lib/site';
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Deduplicates the lookup shared by generateMetadata and the page render.
+const getProduct = cache(getProductBySlug);
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+  if (!product) return { title: 'Product not found' };
+
+  const title = product.weight ? `${product.title} (${product.weight})` : product.title;
+  const description = toMetaDescription(
+    product.description,
+    `${product.title} from ${product.vendor.name}. Lab-tested organic, sourced direct from the farm.`
+  );
+  return {
+    title,
+    description,
+    alternates: { canonical: `/product/${product.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `/product/${product.slug}`,
+      images: product.image_url ? [{ url: product.image_url, alt: product.title }] : undefined,
+    },
+  };
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
 
-  const product = await getProductBySlug(slug);
+  const product = await getProduct(slug);
   if (!product) notFound();
 
   return (

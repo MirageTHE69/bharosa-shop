@@ -1,18 +1,47 @@
+import { cache } from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCategoryBySlug } from '@/lib/data/categories';
 import { getApprovedProducts } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { DEFAULT_PRODUCT_IMAGE } from '@/lib/constants';
+import { toMetaDescription } from '@/lib/site';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Deduplicates the lookup shared by generateMetadata and the page render.
+const getCategory = cache(getCategoryBySlug);
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const category = await getCategory(slug);
+  if (!category) return { title: 'Category not found' };
+
+  const title = `${category.name_en} — Lab-Tested Organic`;
+  const description = toMetaDescription(
+    category.description,
+    `Shop lab-tested organic ${category.name_en.toLowerCase()} direct from verified Indian farmers.`
+  );
+  return {
+    title,
+    description,
+    alternates: { canonical: `/category/${category.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `/category/${category.slug}`,
+      images: category.image_url ? [{ url: category.image_url, alt: category.name_en }] : undefined,
+    },
+  };
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
 
-  const category = await getCategoryBySlug(slug);
+  const category = await getCategory(slug);
   if (!category) notFound();
 
   const products = await getApprovedProducts({ categorySlug: slug });

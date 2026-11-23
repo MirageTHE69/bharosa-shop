@@ -1,4 +1,4 @@
-import { connectDB } from '@/lib/db/connect';
+import { connectDB, rethrowIfDatabaseDown } from '@/lib/db/connect';
 import { Product as ProductModel } from '@/lib/db/models/Product';
 import { Category as CategoryModel } from '@/lib/db/models/Category';
 import { Vendor as VendorModel } from '@/lib/db/models/Vendor';
@@ -53,7 +53,63 @@ export async function getApprovedProducts(
       .filter((d) => (d.vendor_id as unknown as { status: string } | null)?.status === 'verified')
       .map(serializeProductWithVendor);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error('Error fetching approved products:', err);
+    return [];
+  }
+}
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Storefront search: matches every word of the query (in any order) against the
+// product's titles, description and farm origin, or its category / farmer name.
+// Same visibility rules as getApprovedProducts.
+export async function searchApprovedProducts(query: string, limit = 48): Promise<ProductWithVendor[]> {
+  const words = query.trim().split(/\s+/).filter(Boolean).slice(0, 6);
+  if (words.length === 0) return [];
+
+  try {
+    const conn = await connectDB();
+    if (!conn) return [];
+
+    const wordClauses = await Promise.all(
+      words.map(async (word) => {
+        // Also match the singular, so "oils" finds "Mustard Oil".
+        const forms = [word];
+        if (word.length > 3 && /s$/i.test(word)) forms.push(word.slice(0, -1));
+        const rx = new RegExp(forms.map(escapeRegex).join('|'), 'i');
+        const [categoryIds, vendorIds] = await Promise.all([
+          CategoryModel.find({ $or: [{ name_en: rx }, { name_hi: rx }, { slug: rx }] }).distinct('_id'),
+          VendorModel.find({ status: 'verified', $or: [{ name: rx }, { hindi_name: rx }] }).distinct('_id'),
+        ]);
+        return {
+          $or: [
+            { title: rx },
+            { hindi_title: rx },
+            { description: rx },
+            { farm_origin: rx },
+            { category_id: { $in: categoryIds } },
+            { vendor_id: { $in: vendorIds } },
+          ],
+        };
+      })
+    );
+
+    const docs = await ProductModel.find({ status: 'approved', $and: wordClauses })
+      .populate(VENDOR_POPULATE)
+      .populate(CATEGORY_POPULATE)
+      .sort({ rating: -1, createdAt: -1 })
+      .limit(limit)
+      .lean();
+
+    return docs
+      .filter((d) => (d.vendor_id as unknown as { status: string } | null)?.status === 'verified')
+      .map(serializeProductWithVendor);
+  } catch (err) {
+    rethrowIfDatabaseDown(err);
+    console.error(`Error searching products for "${query}":`, err);
     return [];
   }
 }
@@ -70,6 +126,7 @@ export async function getProductBySlug(slug: string): Promise<ProductWithVendor 
     if ((doc.vendor_id as unknown as { status: string } | null)?.status !== 'verified') return null;
     return serializeProductWithVendor(doc);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching product by slug "${slug}":`, err);
     return null;
   }
@@ -82,6 +139,7 @@ export async function getProductById(id: string): Promise<Product | null> {
     const doc = await ProductModel.findById(id).lean().catch(() => null);
     return doc ? serializeProduct(doc) : null;
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching product by id "${id}":`, err);
     return null;
   }
@@ -94,6 +152,7 @@ export async function getOwnProducts(vendorId: string): Promise<Product[]> {
     const docs = await ProductModel.find({ vendor_id: vendorId }).sort({ createdAt: -1 }).lean();
     return docs.map(serializeProduct);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching own products for vendor "${vendorId}":`, err);
     return [];
   }
@@ -112,6 +171,7 @@ export async function getAllProductsForAdmin(status?: ProductStatus): Promise<Pr
       .lean();
     return docs.map(serializeProductWithVendor);
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error('Error fetching admin products:', err);
     return [];
   }
@@ -128,6 +188,7 @@ export async function getProductByIdForAdmin(id: string): Promise<ProductWithVen
       .catch(() => null);
     return doc ? serializeProductWithVendor(doc) : null;
   } catch (err) {
+    rethrowIfDatabaseDown(err);
     console.error(`Error fetching admin product by id "${id}":`, err);
     return null;
   }

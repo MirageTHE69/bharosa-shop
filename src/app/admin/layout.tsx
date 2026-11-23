@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutDashboard, Users, Package, Home } from 'lucide-react';
@@ -8,6 +9,11 @@ const navItems = [
   { href: '/admin/vendors', label: 'Vendors', icon: Users },
   { href: '/admin/products', label: 'Products', icon: Package },
 ];
+
+// Private pages: keep them out of search results.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUser();

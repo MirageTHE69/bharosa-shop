@@ -3,6 +3,7 @@ import { Montserrat, Tiro_Devanagari_Hindi, Noto_Sans_Gujarati, Inter } from "ne
 import "./globals.css";
 import { AppShellProvider } from "@/context/AppShellContext";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,8 +31,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bharosa Shop — Lab-Tested Organic Ghee, Honey, Oils & Spices Online",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Bharosa Shop — Lab-Tested Organic Ghee, Honey, Oils & Spices Online",
+    template: "%s | Bharosa Shop",
+  },
   description: "India's verified organic marketplace. NABL lab-tested A2 ghee, cold-pressed oils, raw honey & spices, sourced direct from farmers. QR batch traceability.",
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_IN",
+    images: [{ url: "/logo.png", width: 670, height: 372, alt: SITE_NAME }],
+  },
+  twitter: { card: "summary_large_image" },
   keywords: ["organic products online India", "lab tested organic products India", "verified organic marketplace India", "A2 ghee cold pressed oil honey online", "sell organic products online India", "NABL certified organic products", "शुद्धता का वादा"],
 };
 
